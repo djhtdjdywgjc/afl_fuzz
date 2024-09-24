@@ -221,7 +221,10 @@ classification_summary = {
 
 bugs_found = []
 
-fuzzing_task_count = len(os.listdir(crash_dir)) - 1
+if len(os.listdir(crash_dir)) == 0:
+    fuzzing_task_count = 0
+else:
+    fuzzing_task_count = len(os.listdir(crash_dir)) - 1
 
 for crash_file in os.listdir(crash_dir):
     if crash_file.rsplit('.', 1)[0] == "README":
@@ -380,7 +383,7 @@ for i in bugs_found:
     i['total_discovery_count'] = total_discovery_count
 
 for i in bugs_found:
-    i['crash_file_path'] = os.getcwd()+'/'+(i['crash_file_path']).rsplit('../',1)[1]
+    i['crash_file_path'] = os.path.dirname(os.getcwd())+'/'+(i['crash_file_path']).rsplit('../',1)[1]
 
 # 生成 JSON 报告
 report = {
