@@ -1,0 +1,1763 @@
+arXiv:1901.00065v1 [physics.flu-dyn] 31 Dec 2018
+
+This draft was prepared using the LaTeX style file belonging to the Journal of Fluid Mechanics
+
+1
+
+Dynamics of thin liquid films on vertical cylindrical fibers
+H. Ji1, C. Falcon1, A. Sadeghpour2, Z. Zeng2, Y. S. Ju2, and A. L. Bertozzi1,2
+1Department of Mathematics, University of California, Los Angeles Los Angeles, CA 90095, USA
+2Mechanical and Aerospace Engineering Department, University of California, Los Angeles Los Angeles, CA 90095, USA
+(Received xx; revised xx; accepted xx)
+Recent experiments of thin films flowing down a vertical fiber with varying nozzle diameters present a wealth of new dynamics that illustrate the need for more advanced theory. We present a detailed analysis using a full lubrication model that includes slip boundary conditions, nonlinear curvature terms, and a film stabilization term. This study brings to focus the presence of a stable liquid layer playing an important role in the full dynamics. We propose a combination of these physical effects to explain the observed velocity and stability of traveling droplets in the experiments and their transition to isolated droplets. This is also supported by stability analysis of the traveling wave solution of the model.
+Key words:
+
+1. Introduction
+Thin liquid films flowing down vertical fibers exhibit complex and interesting interfacial dynamics, including the formation of droplets and traveling wave patterns (Qu´er´e (1990); Kalliadasis et al. (2011)). Such dynamics is an important consideration in various applications (Chinju et al. (2000); Zeng et al. (2017)) that take advantage of extended interfacial areas afforded by thin liquid films. A recent experimental study (Sadeghpour et al. (2017)) observed three distinct regimes of interfacial patterns by simply varying the diameters of the nozzles feeding the fluid. This was quite unexpected because other experimental conditions (flow rate, fiber radius, and fluid), which were thought to primarily govern interfacial dynamics, remained the same. These experimental results motivate us to revisit the existing modeling studies in the literature and extend them for an improved understanding of the physics involved.
+The Rayleigh-Plateau instability and the effects of gravity modulation that leads to the rich variety of dynamical behaviors, including the droplet formation, sliding droplets of constant speeds, and irregular waves patterns, have been extensively studied (Kliakhandler et al. (2001)). A key physical feature of films falling down vertical fibers is that the surface tension plays both a stabilizing and destabilizing role due to the axial and azimuthal curvatures of the interface, respectively (Craster & Matar (2009)). Frenkel (1992), Chang & Demekhin (1999) and Kalliadasis & Chang (1994) investigated
+ Email address for correspondence: hangjie@math.ucla.edu
+
+2
+
+H. Ji, C. Falcon, A. Sadeghpour, Z. Zeng, Y. S. Ju, A. L. Bertozzi
+
+a weakly nonlinear thin film model under the assumption that the film thickness is much smaller than the fiber radius. These studies reveal that the system can exhibit interesting dynamics with large-magnitude waves. A thick-film (KDB) model was later proposed by Kliakhandler et al. (2001), which utilizes fully nonlinear curvature terms for the case where the film thickness is larger than the fiber radius. However, their model was not derived asymptotically and overestimated the bead velocity. Craster & Matar (2006) revisited this problem and derived an asymptotic (CM) model using a low-Bond-number, surface-tension-dominated theory. These two studies focused on cases with relatively small flow rates and developed single evolution equations. To study the case of moderate flow rates, Trifonov et al. (1992) firstly formulated a system of evolution equations for both the film thickness and volumetric flow rate. This model was then re-formulated by Sisoev et al. (2006) using the integral boundary layer method. It was more recently revisited by Ruyer-Quil et al. (2008), Duprat et al. (2009) and Ruyer-Quil & Kalliadasis (2012).
+In Kliakhandler et al. (2001), with decreasing mass flow rates, three different flow regimes were observed from experiments: (a) convective regime where faster moving droplets collide into slower moving ones, (b) Rayleigh-Plateau regime where stable traveling wave propagates without any collisions, and (c) isolated droplet dripping regime where widely spaced traveling beads are separated by smaller droplets.
+Regimes (b) and (c) were qualitatively captured by both the KDB and CM models using traveling wave solutions but the calculated bead velocities were overestimated by more than 40%. Moreover, the CM theory led to a conclusion that regime (b) would be a transient rather than a steady-state phenomenon. These discrepancies were further investigated by Duprat et al. (2007) and Smolka et al. (2008). However, quantitative models that can resolve the reported discrepancies are still lacking, motivating further studies.
+In the present paper, we report a combination of experimental and numerical results for flows in the Rayleigh-Plateau regime (regime (b)), in particular under flow conditions where the film thickness is comparable to or larger than the fiber radius. The recent work by Sadeghpour et al. (2017) showed that one can observe all three flow regimes under a fixed flow rate and a fixed fiber radius by simply varying the nozzle diameter. We leverage their study to examine the characteristics of nonlinear traveling waves that dominate flow dynamics downstream of the nozzle. We incorporate, into a lubrication model, the slip condition, the fully nonlinear curvature term and a film stabilization term for the dynamic pressure. We examine their influences on the wave propagation velocity and the dynamic transition from regime (b) to regime (c).
+Most of the previous models summarized above employed the classical no-slip boundary condition at the solid-liquid interface. Haefner et al. (2015) incorporated slip boundary conditions into a thin-film model and showed that slippage strongly affects the growth rate of undulations when gravitational effects are neglected. Halpern & Wei (2017) later demonstrated that slip effects promote droplet formation and provided a plausible explanation for the discrepancy between the predicted and experimentally-obtained critical Bond number for droplet formation. More recently, Chao et al. (2018) reported that wall slippage also enhances the size and speed of droplets for thin liquid films flowing down a uniformly heated (cooled) cylinder. All of these past slip models assumed that the liquid film thickness is much smaller than the fiber radius, which is not true in our case. We quantitatively investigate the slip effects for the first time on flow dynamics where the fluid film thickness is comparable to the fiber radius.
+To describe the wetting behavior of a liquid on a solid substrate, intermolecular forces such as van der Waals interactions and Born repulsion are usually modeled by adding
+
+Dynamics of thin liquid films on vertical cylindrical fibers
+
+3
+
+a disjoining pressure in lubrication equations. Different forms of the disjoining pressure representing a combination of long-range and short-range intermolecular forces can be used to characterize hydrophobic or hydrophilic phenomenon. For a well wetting liquid studied in Reisfeld & Bankoff (1992), these forces favor a thick film, and the disjoining pressure can be described as (h) = -A/h3 with a positive Hamaker constant A > 0. In contrast, for a dewetting liquid, the purely destabilizing intermolecular forces modeled by (h) = A/h3 can lead to finite-time rupture in the film thickness. For partially wetting liquids, a combination of stabilizing and destabilizing molecular interactions are involved and the disjoining pressure takes the form (h) = -A/h3(1-b/h) (Thiele (2011)). For an extensive review of this topic, we refer the readers to de Gennes (1985); Bonn et al. (2009) and Israelachvili (2011). The role of the intermolecular forces in slowly withdrawing a thin fiber out of a bath of wetting liquid has been studied in Qu´er´e et al. (1989) and Qu´er´e (1999). The dynamics of non-isothermal liquid film with van der Waals interactions on a horizontal cylinder was considered in Reisfeld & Bankoff (1992) and Thiele (2011). To the best of our knowledge, the stabilization of the coating film in dynamics of liquid flowing down vertical fibers has not been discussed in the literature. In this paper we propose a film stabilization model to account for thin undisturbed layers of well-wetting silicone oil found in our experiments.
+The stability of the traveling beads plays a key role in the flow regime transition. For the case of thin films of liquid, classical theory developed by Kalliadasis & Chang (1994); Chang & Demekhin (1999); Yu & Hinch (2013) and experiments by Qu´er´e (1990) show that the behavior of the well-separated pulses is determined by the local undisturbed film thickness connecting these pulses. For the case where the undisturbed film is thicker than a critical value hc, the pulse grows by collecting fluid from the undisturbed liquid layer in between the pulses (regime (c)); while for thinner films, a stable traveling wave propagates at a constant speed (regime (b)). In this study, we focus on the case where the fiber is coated with relatively thick films of liquid compared to the fiber radius, and show that the inclusion of the film stabilization term allows us to better capture the undisturbed liquid layer and thereby the regime transition.
+The structure of this paper is as follows. Experimental setup and observations in the Rayleigh Plateau regime are presented in section 2. In section 3, the model for viscous thin films flowing down a wetting fiber that incorporates wall slippage, nonlinear curvature, and a film stabilization term is formulated. The traveling wave pattern that appears in the model is examined in section 4. In this section, we also discuss the influences of the film stabilization term on the moving speed and profile of sliding droplets. In addition, the stability of the spatially uniform solutions and traveling wave solutions for the film stabilization model is explored. New experimental results, parametrized by varying nozzle diameters, are compared with theory in section 5. These comparisons reveal that the discrepancy between experiment and theory in the moving speed of droplets, for regimes (b) and (c), can be reasonably resolved by including the film stabilization term. Concluding notes and discussion of the remaining open questions are presented in section 6.
+
+2. Experiments
+2.1. Methods
+Figure 1 shows a schematic of the setup we used to experimentally study the characteristics of a liquid film flowing down a vertical string. We use a programmable syringe pump to introduce a working liquid into the nozzle and generate flows. The high-speed
+
+4
+
+H. Ji, C. Falcon, A. Sadeghpour, Z. Zeng, Y. S. Ju, A. L. Bertozzi
+
+-! 2
+8
+
+!" #$%&'() *+,* -" .)/)%01&% 2" 3&4+&5 '1667) 8" 9&(: /*))5 ;<,)%< =" >)&(:? @" >)&(:? /;<7) A" 3&4+&5 ?<'B C" DEF /$/?),
+
+=
+
+C
+
+A
+
+@
+
+Figure 1: Experimental setup.
+
+camera is mounted on a translation stage for focusing and positioning and is operated at a frame rate of 1000 frames/second.
+The working fluid is a well-wetting liquid of low surface energy, Rhodorsil silicone oil v50, with density  = 963 kg/m3, kinematic viscosity  = 50 mm2/s, surface tension  = 20.8 mN/m at 20C, and capillary length lc = 1.5 mm. We use stainless steel nozzles with the nozzle inner diameters (IDs) ranging from 0.6 mm to 2.5 mm and the wall thicknesses ranging from 0.1 mm to 0.2 mm. The experiments are performed using 0.6 m long Nylon strings of diameter 0.2 and 0.43 mm, both smaller than the capillary length. A weight is attached to vertically align the string. Two X-Y stages are used to center the string with respect to the nozzle. The liquid mass flow rate, monitored using a weight scale connected to a computer, is varied from 0.02 g/s to 0.09 g/s.
+2.2. Data Analysis
+We use image processing tools to extract parameters such as the average bead speed, period L, maximum film thickness hm, and mass contained in each bead. In order to characterize the liquid bead profile, we use the longitudinal distance between the fiber and the maximum curvature point along the liquid. We utilize the color contrast on the image to extract the contour of the fluid and the fiber to thereby determine the liquid film thickness h. A local least squares smoothing is performed to account for pixelation noise. From this profile, we determine the average period L as the distance between two adjacent maxima. Integrating the profile over the chosen domain, we find the mass constraint value M0 as defined later in section 3. Figure 2 shows a representative experimental frame and the film profile produced after the data is processed.
+The uncertainties in the parameters obtained from our image processing are estimated in terms of a single pixel scaling and the selection of the color value for the contour. The estimated uncertainty is ±0.08 mm for the streamwise length and ±0.10 mm for the bead
+
+Dynamics of thin liquid films on vertical cylindrical fibers
+
+5
+
+h* (mm)
+
+1
+L*
+
+0
+
+0
+
+10
+
+20
+
+30
+
+x* (mm)
+
+Figure 2: Experimental frame (top) and processed data analysis (bottom) for fiber radius R = 0.1 mm, nozzle inner diameter ID = 0.8 mm, and flow rate Qm = 0.04 g/s, shown at a distance 8 - 10 mm from the nozzle . The red dots superimposed on the experimental
+frame correspond to the extracted film profile and the black dots on the bottom plot
+correspond to the locations of the maxima. The average distance between two maxima is L = 5.92 mm and the film thickness between the drops ranges from 0.095 to 0.120 mm.
+
+h(x, t)
+R
+g
+y, v x, u
+Figure 3: Schematic of a thin liquid film flowing down a vertical cylindrical fiber.
+height. Using a total of 1000 images for each run, we measure the averages for maximum fluid height, mass, bead speed, and distance between two subsequent beads.
+3. Model formulation We consider a flow of two-dimensional axisymmetric Newtonian fluid down a vertical
+cylinder of radius R (see Figure 3). The liquid properties, including the surface tension , density , and kinematic viscosity , are all assumed to be constant. This model formulation does not include the nozzle size as a system parameter because we are interested in the flow downstream where the nozzle does not affect the dynamics. Instead, we consider the scales for frequency and mass of the droplets, which depend on the nozzle size (Sadeghpour et al. (2017)). We will discuss this dependence later in Appendix B. We review below the derivation of the governing equations and boundary conditions by Ruyer-Quil et al. (2008) and Craster & Matar (2006) and discuss our inclusion of additional physics related to slip, curvature, and wetting properties.
+
+6
+
+H. Ji, C. Falcon, A. Sadeghpour, Z. Zeng, Y. S. Ju, A. L. Bertozzi
+
+The dimensional Navier-Stokes equations for axisymmetric flows are
+
+
+
+
+
+
+
+1
+
+
+
+ uy  
+
+ut + u ux + v uy = - (px + x ) + g +  uxx +  + uyy ,
+
+
+
+y
+
+(3.1a)
+
+     py 
+
+vy  
+
+v 
+
+vt + v vy + u vx = - +   + vyy - 2 + vxx ,
+
+
+
+y
+
+y
+
+(3.1b)
+
+where t represents the time, u and v represents the axial and radial components of the velocity, p is the pressure, and g is the gravitational acceleration. We adopt the functional
+
+form of the disjoining pressure used in Reisfeld & Bankoff (1992) and introduce the film
+
+stabilization term (h)
+
+  A  (h ) = - 3 ,
+h where A is a stabilization parameter. The equation of continuity is given by
+
+(3.1c)
+
+v vy  + + ux  = 0.
+
+y
+
+(3.1d )
+
+Along the fiber, at the interface between the solid substrate and the fluid y = R, we impose the Navier slip and no penetration boundary conditions:
+
+v = 0, u = uy  at y = R,
+
+(3.1e)
+
+where  > 0 is the slip length in standard slip models (Haefner et al. (2015); Mu¨nch et al. (2005)). The no-slip boundary condition corresponds to  = 0. Typical slip
+lengths for polymeric liquids such as silicone oil range from 1 to 10µm (Halpern & Wei
+(2017); Qu´er´e (1990)). The normal and shear stress balances on the free surface y = R + h are given by
+
+
+
+2µ
+
+2 
+
+
+
+
+
+
+
+
+
+p=
+
+2 (hx ux - hx (vx + uy ) + vy ) +
+
+2 3/2
+
+1 + hx
+
+(1 + hx )
+
+1
+
++
+
+2
+hx
+
+
+
+- hxx
+
+R + h
+
+, (3.1f )
+
+(1
+
+-
+
+2 
+hx )(vx
+
++
+
+uy  )
+
++
+
+2hx  (vy 
+
+-
+
+ux  )
+
+=
+
+0,
+
+(3.1g )
+
+where µ is the dynamic viscosity, and  scales the total curvature which consists of a
+
+destabilizing azimuthal curvature term and a stabilizing axial curvature term. We then
+
+complete the system by including the kinematic boundary condition on the free surface y = R + h,
+
+ht  + uhx  = v at y = R + h.
+
+(3.1h)
+
+The next step is to choose the appropriate dimensionless parameters in order to
+
+nondimensionalize the model. Following Duprat et al. (2009) we choose the scales for
+
+the system as follows: the lengthscale in the radial direction y is H, and the lengthscale
+
+in the streamwise direction x is L = H/. The scale ratio  is set by the balance between the surface tension term hxxx, arising from px, and the gravity g, and is given by  = (gH2/)1/3. This scale ratio is small (around 0.4) in typical experiments and can also be rewritten as  = We-1/3, where the Weber number We = (lc/H)2 compares
+the capillary length lc = /(g) to the radial lengthscale H. Then the characteristic streamwise velocity is U = (gH2)/, and the pressure- and time-scales are given by gL and (L)/(gH2) respectively. With these scales, we drop the star superscript in (3.1) and
+
+write the non-dimensional Navier-Stokes equations using dimensionless variables in the
+
+form
+
+2Re (ut + uux + vuy) = -px-x + 1 + uy + uyy + 2uxx, y
+
+(3.2a)
+
+Dynamics of thin liquid films on vertical cylindrical fibers
+
+7
+
+4Re (vt + vvy + uvx) = -py + 2 vyy + vyy - y2v + 4vxx,
+
+(3.2b)
+
+where the Reynolds number Re = UL/. The dimensionless continuity equation is identical to (3.1d) in form. The balances of normal and tangential stresses at y = h + R are expressed as
+
+(1 - 2h2x)(2vx + uy) + 22hx(vy - ux) = 0,
+
+(3.2c)
+
+
+
+hxx
+
+p
+
+= 2(1
+
++
+
+h)(1
+
++
+
+2h2 )1/2
+x
+
+-
+
+(1
+
++
+
+2h2 )3/2
+x
+
++ 2 2  h 4 2xux - hxvx + 2(-hxuy + vy) , 1 +  hx
+
+(3.2d )
+
+where the dimensionless parameter  = H/R is the aspect ratio of the characteristic radial length scale and the fiber radius, and the dimensionless fiber radius R = R/H.
+The slip and no-penetration boundary conditions on y = R are
+
+v = 0, u = uy,
+
+(3.2e)
+
+where the non-dimensional slip length  = /H. The kinematic boundary condition remains unaltered in its form.
+We next simplify the above set of governing equations by following Ruyer-Quil et al. (2008). Under the lubrication approximation, the inertial contributions can be neglected since Re = O(1) and   1. Note that we do not assume the small ratio  between the liquid film thickness and the fiber radius. Omitting the terms of order O(2), we rewrite the leading order non-dimensional reduced momentum and continuity equations for the velocity field (u, v) and the dynamic pressure p as
+
+p  2u uy 1 - - + 2 + = 0,
+x x y y - p = 0, y
+u + v + v = 0. x y y
+The balance of tangential stresses at the free surface y = h + R is reduced to
+
+(3.3a) (3.3b) (3.3c)
+
+uy = 0.
+
+(3.3d )
+
+The destabilizing azimuthal curvature and the stabilizing streamwise curvature terms in (3.2d) are both important throughout the liquid film. For   1 a formal expansion of the azimuthal curvature term in (3.2d) yields
+
+
+
+
+
+12 2
+
+4
+
+=2
+
+1 -  hx + O( ) ,
+
+2(1 + h) 1 + 2h2x  (1 + h)
+
+2
+
+which shows that this term is of order O(/2), for both cases h  1 and h = O(1). At the steep front of a moving droplet, we have hx = O(1), and the second term in the expansion contributes an additional O() term to the dynamic pressure. Similarly, for the streamwise curvature term in (3.2d), we have
+
+hxx
+
+32 2
+
+4
+
+2 2 3/2 = hxx 1 -  hx + O( ) .
+
+(1 +  hx)
+
+2
+
+At the front of the moving droplet, the O(2) term introduced by the nonlinear curvature
+
+8
+
+H. Ji, C. Falcon, A. Sadeghpour, Z. Zeng, Y. S. Ju, A. L. Bertozzi
+
+is negligible. Therefore, we only keep a fully nonlinear azimuthal curvature term and use the linearized curvature in the streamwise direction. The balance of normal stresses at the free surface y = h + R is then reduced to
+
+
+
+2h
+
+p= 2
+
+2 2 - x2 .
+
+ (1 + h) 1 +  hx
+
+(3.3e)
+
+It is important to note that the first term on the right-hand-side of (3.3e) accounts for the balance between the azimuthal and axial scales characterized by  and . We will further discuss appropriate forms of this term for different cases later.
+To derive the evolution equation for h from above, we first consider a uniform Nusselt flow without any interfacial instabilities. The velocity field of this flow is obtained by balancing the viscosity and gravity acceleration in (3.2). That is, the streamwise velocity u0 of the Nusselt flow satisfies the reduced system
+
+2u0 1 u0
+
+1+ 2 +
+
+=0
+
+y y y
+
+(3.4a)
+
+with boundary conditions u0 = 0 at y = h + R, y
+
+u0 =  u0 at y = R. y
+
+(3.4b)
+
+Solving (3.4) for u0 leads to
+
+u0(y) = - 1 (y2 - R2) + 1 (h + R)2 ln y + h h + 1 .
+
+4
+
+2
+
+R
+
+2R
+
+(3.5)
+
+The rescaled kinematic boundary conditions together with the slip and no-penetration boundary conditions (3.2e) and the shear stress condition (3.3d) lead to the mass conservation equation
+
+(1 + h) h + q = 0, where q = 1 h+R uy dy.
+
+t x
+
+RR
+
+(3.6)
+
+Following Ruyer-Quil et al. (2008) where an approach based on a projection of the velocity field of a test function is used, we take the inner product of (3.3a) with the Nusselt uniform solution u0, and obtain
+
+h+R(1 + u u yy + y )u0y dy =
+
+h+R
+(px+x)u0y dy.
+
+R
+
+y
+
+R
+
+(3.7)
+
+From equation (3.3b), we see that the pressure p is a function of x only, and the righthand-side of the above equation becomes pxR¯q0. Note that the Nusselt solution u0 satisfies (3.4). By integrating by parts and applying the slip and no-penetration boundary conditions (3.2e) and the shear stress condition (3.3d), we obtain
+
+q = 1 - p -  q0. x x
+
+(3.8)
+
+Here q0, the flow rate per unit circumference length for the uniform Nusselt layer, is
+
+q0 = 1 R+h u h3 h2 0y dy =  (h) + (h + 2)2 ,
+
+RR
+
+3
+
+4
+
+(3.9)
+
+where the shape factor  is a function defined by
+
+(X) = 16X3 3 [(1 + X)4(4 log(1 + X) - 3) + 4(1 + X)2 - 1].
+
+(3.10)
+
+Dynamics of thin liquid films on vertical cylindrical fibers
+
+9
+
+Given a dimensional volumetric flow rate Qm and fiber radius R, we define the volumetric flow rate per circumference unit q0 as q0 = Qm/(2R). From (3.9) the characteristic axial lengthscale H for a uniform Nusselt flow can then be obtained. For the no-slip case  = 0, equation (3.9) gives the Nusselt solution h  H used in Duprat et al. (2009); Ruyer-Quil et al. (2008).
+Finally, by rescaling the time scale t  t/() and combining (3.6), (3.9) and (3.8), we obtain the dimensionless governing equation
+
+ h +  h2 +  M(h) 1 - p -  = 0,
+
+t
+
+2
+
+x
+
+x x
+
+(3.11)
+
+where the mobility function takes the form
+
+M(h; , ) = h3 (h) + h2(h + 2)2 .
+
+3 ()
+
+4()
+
+(3.12)
+
+This choice of timescale leads to a normalized mobility function such that M = 1/3 for
+
+h = 1 and  = 0. Moreover, in the limit of the aspect ratio   0, the mobility function
+
+becomes
+
+M(h; , ) = 1 h2(h + 3) +  h2(h + 3)(h - 1) + O(2),
+
+3
+
+3
+
+(3.13)
+
+and its leading order term agrees with the mobility function used in the slip model
+
+proposed by Halpern & Wei (2017). Substituting (3.3e) into (3.11) yields an evolution
+
+equation for the film thickness h(x, t)
+
+
+
+2
+
+
+
+
+
+2h
+
+h + h + M(h) 1 - Z(h) - 2 = 0,
+
+t
+
+2
+
+x
+
+x
+
+x
+
+(3.14)
+
+where Z(h) includes the destabilizing azimuthal curvature of the film and the film stabilization term. Comparing (3.14) and (3.11), and using (3.3e) with a scaling parameter  = 2, we write the complete form of Z(h) as
+Z(h) = p + hxx +  =  + (h). (1 + h) 1 + h2x
+
+Equation (3.14) is a fourth-order nonlinear partial differential equation for the thickness h(x, t). This model accounts for the surface tension, gravity and azimuthal instabilities, but neglects inertia and streamwise viscous dissipation (Ruyer-Quil et al. (2009)). When the Rayleigh-Plateau instability dominates over the inertia and streamwise viscous dissipation, our model (3.14) is expected to provide a good agreement with experimental data.
+Different forms of Z(h) appear in the literature to represent the azimuthal curvature of the film. For instance, Yu & Hinch (2013) assumed that the film is much thinner than the fiber radius, H  R (which corresponds to   1), and used a simple form Z(h) = -(/)2h where the leading-order constant term in the expansion of the azimuthal curvature is neglected. For thicker films that are of interest to the present study,  = O(1) and h is at most O(1) so we use (3.15) as the first form of Z
+
+ZCM (h) =  (1 + h)
+
+(3.15)
+
+following Craster & Matar (2006); Sisoev et al. (2006); Ruyer-Quil et al. (2008, 2009).
+
+10
+
+H. Ji, C. Falcon, A. Sadeghpour, Z. Zeng, Y. S. Ju, A. L. Bertozzi
+
+With ZCM(h) in (3.15) and  = 0, the evolution equation (3.14) reduces to
+
+(CM)
+
+ h +  h2 +  h3 (h) 1 - 
+
+ - hxx
+
+t
+
+2
+
+x 3 ()
+
+x (1 + h)
+
+= 0, (3.16)
+
+which is consistent with the evolution equation derived by Craster & Matar (2006) except
+
+for a scaling difference. For the rest of this paper, we will refer to the model (3.16) as
+
+the Craster & Matar (CM) model.
+
+To incorporate the slip effects under the framework of the CM model, we use the
+
+evolution equation (3.14) with the non-dimensional slip length  > 0, the mobility
+
+function (3.12) and the azimuthal curvature term (3.15). This will be referred to as
+
+the Slip Craster & Matar (SCM) model. We will show that this slip model promotes
+
+droplet formation and leads to an increased speed of propagation.
+
+With the aspect ratio  being of O(1), in the limit as   0, (3.15) becomes singular.
+
+To address this problem, in this paper we will consider two additional forms of Z(h) to
+
+reflect the balance between the azimuthal and axial scales under different flow conditions.
+
+As the second form of Z, we define
+
+ZF C (h) =
+
+.
+
+(1 + h) 1 + h2x
+
+(3.17)
+
+This fully nonlinear azimuthal curvature term provides an O(/3/2) contribution to the dynamic pressure near the advancing edge of the moving beads. It has been shown in many applications (Snoeijer (2006); Lopes et al. (2018)) that using the full expression for the curvature term can provide better accuracy for lubrication models, and this issue was recently reviewed in Thiele (2018). We will show that the inclusion of the fully nonlinear curvature yields an increased speed of propagation of the traveling beads and partially improves agreement with our experimental results. Compared with the thick film model proposed in Kliakhandler et al. (2001), where both curvature terms are fully nonlinear, our model has only a nonlinear azimuthal curvature term. The stabilizing axial curvature term is linearly approximated. For the remainder of this paper, we will refer to the evolution equation (3.14) with the mobility function (3.12) and the azimuthal curvature term (3.17) as the Full Curvature Model (FCM).
+As the third form of Z, we include the film stabilization term to deal with the unbalanced azimuthal curvature term. Thus we replace (3.15) with
+
+
+
+A
+
+ZF S(h) =
+
+- 3.
+
+(1 + h) h
+
+(3.18)
+
+The last term of (3.18) is motivated by the functional form of the long range attractive part of the well-known apolar van der Waals model (de Gennes (1985); Oron et al. (1997); Oron & Bankoff (2001)) for the well-wetting liquids used in our experiments. The stabilization parameter A = (24p)/(3(p + 1)2) > 0 is expressed in terms of a dimensionless thickness p, below which a thin uniform fluid layer on a fiber is stable. We will discuss this stability criterion further in section 4. The film stabilization term is found to significantly improve agreement with our experimental data as discussed in section 5. The model (3.14) with M(h) from (3.12) and the azimuthal curvature with film stabilization term (3.18) will be referred to as the film stabilization model (FSM).
+In summary, this paper considers four versions of the model (3.14) listed in Table 1 to incorporate different physical effects. When contrasted with the CM model, which corresponds to the asymptotic model studied in Craster & Matar (2006), the other three new models take into considerations the slip effects, the nonlinear curvature, and the film stabilization term, respectively.
+
+Dynamics of thin liquid films on vertical cylindrical fibers
+
+11
+
+(CM) Craster & Matar Model: (SCM) Slip Craster & Matar Model: (FCM) Full Curvature Model: (FSM) Film stabilization model:
+
+=0 >0 0 0
+
+Z(h) = ZCM (h) in (3.15) Z(h) = ZCM (h) in (3.15) Z(h) = ZF C (h) in (3.17) Z(h) = ZF S (h) in (3.18)
+
+Table 1: A summary of the models using (3.14)
+
+4. Film stabilization model and stability analysis
+
+In this section, we derive the stabilization parameter A in equation (3.18) and study its effects. Using a stability analysis study, we show that A > 0 is important to reproduce the stable traveling wave solutions (TWS) observed in experiments.
+We begin by examining the linear stability of the uniform Nusselt solution. Following the approach in Craster & Matar (2006), we perturb the uniform film (h0 = 1) by an infinitesimal Fourier mode,
+
+h = h0 + eikx+t,
+
+(4.1)
+
+where k is the wave number,  describes the growth rate of the perturbation, and  ( 1) the initial amplitude. Expanding PDE (3.14) then gives the dispersion relation:
+
+k2  = -ikck(, ) +
+3(1 + )
+
+2 - k2 - 3A (1 + )2
+
+1 + 3( + 2)2 , 4()
+
+(4.2)
+
+where ck is the speed of linear kinematic wave solutions of (3.14) for small wave numbers,
+
+ck(, ) = 1 1 + () + ( + 2) ,
+
++1
+
+3()
+
+()
+
+(4.3)
+
+and it increases linearly with the presence of slip. The real part of  is the effective growth
+rate, and the thickness h0 = 1 is long-wave unstable with respect to perturbations with 0 < k < kc, where the critical wavenumber kc = (1+)2 2 - 3A 1/2 . For A = 0 this cut-off wavenumber corresponds to the classical RP mode for the capillary instability
+of a viscous jet where Re() = 0 at k = kc. The most unstable mode occurs at km = 2(1+)2 2 - 23A 1/2 , where the largest growth rate m is attained. The equation (4.2)
+also shows that the slip effects always enhance the Rayleigh-Plateau instability which
+agrees with the work by Halpern & Wei (2017). We repeat the above analysis for a uniform thin layer h = h0(< 1). The effective
+growth rate of disturbances with wavenumber k is given by
+
+k2 Re(0) =
+3h0(h0 + 1)
+
+h42
+0
+
+-
+
+k2h4
+0
+
+-
+
+3A
+
+(h0 + 1)2
+
+(h0) + 3(h0 + 2)2  .
+
+()
+
+4h0()
+
+(4.4)
+
+Figure 4 gives the dispersion relation (4.4) for the uniform Nusselt solution h0 = 1 and
+
+a thinner undisturbed layer of h0 = 0.2 under the CM, SCM, and FSM models. The
+
+Nusselt solution h0 = 1 is unstable for small wavenumbers for all three models. The
+
+finite slippage increases the growth rates of the unstable modes. For the CM and SCM
+
+models, the thinner undisturbed liquid layer (h0 = 0.2) is unstable over larger ranges
+
+of the wavenumber. In stark contrast, the FSM model saturates the unstable modes,
+
+rendering the thinner undisturbed layer linearly stable for all wavenumbers (see the solid
+
+curve in Figure 4 (right)) for certain values of A.
+
+12
+
+H. Ji, C. Falcon, A. Sadeghpour, Z. Zeng, Y. S. Ju, A. L. Bertozzi
+
+0.4
+
+0.4
+
+CM
+
+CM
+
+FSM
+
+FSM
+
+SCM
+
+SCM
+
+0.2
+
+0.2
+
+Re( 0 ) Re( 0 )
+
+¢
+
+0
+
+¡
+
+0
+
+- 0.2
+
+h0 = 1
+
+- 0.2 h0 = 0.2
+
+- H.4 0
+
+1
+
+2
+
+k
+
+- 0.4
+
+3
+
+0
+
+2
+
+4
+
+6
+
+8
+
+k
+
+Figure 4: Dispersion relation plots of Re(0) against the wavenumber k with the constant film thickness (left) h0 = 1 and (right) h0 = 0.2 for the CM model, the SCM with slip  = 0.1, and the FSM model with p = 0.2, which corresponds to A = 0.027 from equation (4.5). Other system parameters are  = 4.96 and  = 0.23.
+
+In the literature, A is typically expressed as a Hamaker constant in terms of microscopic quantities (de Gennes (1985)) . We instead choose the values of A based on stable undisturbed liquid layers. Empirical observations of the thin film layers between droplets indicate that these undisturbed liquid layers are comparable to the corresponding fiber radius R. Therefore, we pick a coating thickness p  R , obtained from experimental measurements. Using the dimensionless undisturbed layer thickness p = p/H and the dispersion relation in (4.4), we derive a formula for A~,
+
+A~ = 24p . 3(p + 1)2
+
+(4.5)
+
+For A = A~, any thin flat film of thickness less than the threshold value p is linearly stable, i.e. Re(0) < 0, for all wave numbers.
+We next examine the influences of the film stabilization terms (3.18) on the profiles and speeds of propagation of the traveling wave patterns governed by (3.14). We consider the model over a periodic domain 0  x  L and introduce a change of variables to the reference frame of the traveling wave,
+
+ = x - ct, s = t, h(x, t) = h~(, s), where c is the speed of the traveling wave. Then h~(, s) satisfies the PDE
+
+ h~ +  h~2 - c  h~ +  h~2 +  M(h~) 1 -  Z(h~) - h~
+
+s
+
+2
+
+
+
+2
+
+
+
+
+
+= 0. (4.6)
+
+The traveling wave solution H() is a steady state of the PDE (4.6) and satisfies the fourth-order ordinary differential equation
+
+c d H +  H2 = d M(H) 1 - d [Z(H) - H] .
+
+d
+
+2
+
+d
+
+d
+
+(4.7)
+
+This is a nonlinear eigenvalue problem, where the speed of propagation c corresponds to the eigenvalue. The effects of slippage  and full nonlinear curvature (3.17) will be studied in section 5.3. Newton's method is used to solve the nonlinear ODE (4.7) where the speed c is treated as an unknown variable. In order to achieve local uniqueness, we
+
+Dynamics of thin liquid films on vertical cylindrical fibers
+
+13
+
+2
+
+A= 0
+
+0.18
+
+A = 0.01
+
+1.5 A = 0.03 A = 0.02 0.16
+
+H1 0.5
+
+0.14 c
+0.12
+0.1
+
+0
+
+0.08
+
+0
+
+1
+
+2
+
+3
+
+4
+
+5
+
+0
+
+
+
+0.05
+
+0.1
+
+0.15
+
+0.2
+
+A
+
+Figure 5: Traveling wave solutions of (4.7) with a varying stabilization parameter A = 0, 0.01, 0.02, 0.03 showing that (left) stronger regularization yields smaller droplet heights and thicker precursor layers (right) the moving speed of drops is significantly increased with larger values of A.
+
+impose a constraint of mass conservation
+
+H + H L  2 d = M0
+
+0
+
+2
+
+(4.8)
+
+for given values of mass M0 and wavelength L extracted from our experimentally obtained liquid film profiles. We also set H(0) = H0 for 0  0  L.
+Numerical investigations reveal that including the film stabilization term in (3.18) enhances the moving speed of traveling wave solutions. In Figure 5 (left), we plot the profiles of traveling wave solutions with a varying stabilization parameter A and identical mass constraint M0 and period L. Since a larger value of A corresponds to a stronger wetting potential in the lubrication model, the near-flat coating thickness increases with increasing A, as expected. Correspondingly, the height of the beads decreases as the coating thickness increases under the fixed overall mass constraint. That is, the presence of the film stabilization term saturates capillary instabilities and generates smaller moving beads. Figure 5 (right) shows that the predicted velocity c increases with the parameter A superlinearly for small A, and increases linearly as A becomes larger. In section 5.1, we will show that, compared to the CM model (3.16), the FSM model with parameter A given by (4.5) significantly improves predictions of the traveling wave velocity against experimental observations.
+Earlier works have not reported a detailed stability analysis of the traveling wave. Therefore, we take a closer look at the linear stability of the traveling wave solutions in the film stabilization model. We consider a positive periodic traveling wave solution H() over the domain 0    L, and perturb it by setting h~(, s) = H() + ()es, where   1 and () is also L-periodic. Here we only focus on perturbations of the same period since the dynamics in both Rayleigh Plateau and isolated droplet regimes have fixed spatial periods. More complicated droplet dynamics (Kalliadasis & Chang (1994)) in the convective regime is not investigated here. We linearize the equation (4.6) around the steady state H() and obtain the O() equation
+
+ = L ,
+
+(4.9)
+
+14
+
+H. Ji, C. Falcon, A. Sadeghpour, Z. Zeng, Y. S. Ju, A. L. Bertozzi
+
+0.03
+
+0.02
+
+1
+
+r
+
+2
+
+1
+
+2
+
+3
+
+Re(  )
+
+0.01 0
+
+- 0.01
+
+- 0.02 0
+
+2 0.001
+
+Ac A
+
+T 3
+
+1 Re( )
+0
+
+0.004
+
+-1 0
+
+A= 0
+
+LG 2
+
+L
+
+Figure 6: (Left) The dependence of dominant eigenvalues of H() on the stabilization
+parameter A for the eigenproblem (4.9) where the unstable eigenvalues are plotted in
+dashed lines and the stable eigenvalues are in solid lines (Right) Corresponding traveling wave profile H and unstable eigenmodes 1, 2, 3 for the CM model (A = 0). The parameters (L, M0) = (8.86, 22.16) correspond to the experiment with flow rate Qm = 0.04 g/s, fiber radius R = 0.1 mm, and nozzle diameter 1.06 mm.
+
+where the linear operator L is
+
+L  c
+
+d + H d 1 + H
+
+ + 1 d M(H) d [Z(H) - ]
+
+1 + H d
+
+d
+
+- 1 d M(H) 1 - d (Z(H) - H)  .
+
+1 + H d
+
+d
+
+(4.10)
+
+Here () is a normalized eigenmode associated with an eigenvalue  and  2= 1. If there are any eigenvalues  with Re() > 0 to the problem (4.9), then the periodic traveling wave solution H() is unstable. For simplicity we only focus on the case where a one-period solution fits in the domain, and numerically calculate the spectrum and corresponding eigenfunctions for the eigenproblem.
+Figure 6 (right) shows the unstable modes predicted by the CM model (A = 0). These instabilities contradict the stable TWS from the corresponding experiment and generate small wavy patterns in the flat film connecting the moving beads. However, these instabilities can be saturated by the FSM model with an appropriate stabilization parameter A. For a typical traveling wave solution H() to the FSM model, its dominant eigenvalues with a varying A are plotted in Figure 6 (left). It shows that without the film stabilization term (i.e. A = 0), the TWS is unstable. In addition to the translational eigenmode T = 0, the dominant unstable eigenvalues are given by complex-conjuagte pairs 1 = 0.0283±0.756i, 2 = 0.0264±1.006i, and 3 = 0.0097±0.503i. Increasing the parameter A yields three pairs of complex conjugate eigenvalues crossing the imaginary axis, suggesting three Hopf bifurcations occur at these crossing points. At each of these bifurcation points, a branch of time-periodic solution emerges corresponding to typical dynamics in the isolated droplet regime.
+For A > Ac all the eigenvalues of H() satisfy Re() < 0 and the traveling wave is stabilized. In section 5.2, we will show that the film stabilization term helps better arrest the stability transition from the Rayleigh-Plateau regime to isolated droplet regime in experiments with different nozzle diameters.
+
+Dynamics of thin liquid films on vertical cylindrical fibers
+
+15
+
+3
+
+3
+
+ID = 0.6 mm
+
+ID = 0.8 mm
+
+ID = 0.8 mm
+
+ID = 1.06 mm
+
+ID = 1.2 mm
+
+ID = 1.2 mm
+
+ID = 1.8 mm
+
+ID = 1.5 mm
+
+2
+
+Thick Fiber
+
+  = 0F215 mm
+
+2
+
+Thin Fiber
+
+R  = 0.1 mm
+
+H
+
+H
+
+1
+
+1
+
+0
+
+0
+
+0
+
+0.5
+
+1
+
+0
+
+0.5
+
+1
+
+/ L
+
+/ L
+
+Figure 7: Plots of rescaled traveling wave solutions H() obtained from (3.14) using (L, M0) from experiments at flow rate Qm = 0.04 g/s and (left) thick fiber of radius R = 0.215 mm (right) thin fiber of radius R = 0.1 mm, corresponding to different nozzle inner diameters (ID). The slip length is set to be  = 7 µm.
+
+1.0
+
+h* (mm)
+
+0.5
+
+0
+
+0
+
+10
+
+20
+
+30
+
+x* (mm)
+
+Figure 8: Film thickness comparison between experiment and theory, for fiber size R = 0.215 mm, flow rate Qm = 0.04 g/s and nozzle inner diameter ID = 3.0 mm.
+
+5. Results
+5.1. Experimental comparisons
+Here, we present a comparison between physical experiments and two models, the film stabilization (FSM) model and the Craster & Matar (CM) model. Appendix A, shows the range of nozzle sizes, fiber radius, and flow rates for the experiments. For each experimental condition, we extract a characteristic period L and bead liquid mass M0. We then use these as input parameters in our models. Appendix B describes how a unique traveling wave solution (TWS) is selected to compare with each experiment for both the FSM and CM models.
+Figure 7 shows the different morphologies that arise when using a thick fiber versus a thin fiber. In the former case, the droplet height and width are close to the period length. In the latter case, the droplets appear more isolated. The profiles in Figure 8 illustrate a direct comparison between the profiles predicted by both models, which are within the margin of error from the experimental film thickness.
+The predicted speeds, however, have noticeable differences between the two models. In Figure 9, we show plots of the observed and predicted speeds for varying nozzle sizes. The left panels indicate the thin fiber R = 0.1 mm whereas the right panels illustrate the thick fiber R = 0.215 mm, with the flow rate Qm increasing from top to bottom. The FSM model agrees quite well with the experimental observations across all of the data. In contrast, the CM model underestimates the speed. We do not show the case with
+
+16
+
+H. Ji, C. Falcon, A. Sadeghpour, Z. Zeng, Y. S. Ju, A. L. Bertozzi
+
+(a)
+
+R
+
+=
+
+0.10
+
+mm,
+
+
+Qm
+
+=
+
+0.04
+
+g/s
+
+I¨©
+
+(b)
+
+R
+
+=
+
+0.215
+
+mm,
+
+
+Qm
+
+=
+
+0.04
+
+g/s
+
+
+
+speed (mm/s)
+
+speed (mm/s)
+
+50 100
+40
+T§
+30
+
+¥¦
+
+0.5
+
+1.0
+
+1.5
+
+P£¤
+
+nozzle inner diameter (mm)
+
+(c)
+
+R
+
+=
+
+0.10
+
+mm,
+
+
+Qm
+
+=
+
+0.06
+
+g/s
+
+140
+Experiment CM FSM 100
+
+60
+
+speed (mm/s)
+
+20 0.5 1.0 1.5 2.0 2.5 3.0 nozzle inner diameter (mm)
+
+(d)
+
+R
+
+=
+
+0.215
+
+mm,
+
+
+Qm
+
+=
+
+0.06
+
+g/s
+
+60
+
+50
+
+40
+
+30
+
+speed (mm/s)
+
+20
+
+20
+
+0.5
+
+1.0
+
+1.5
+
+2.0
+
+0.5
+
+1.0
+
+1.5
+
+2.0
+
+nozzle inner diameter (mm)
+
+nozzle inner diameter (mm)
+
+(e)
+
+R
+
+=
+
+0.10
+
+mm,
+
+
+Qm
+
+=
+
+0.08
+
+g/s
+
+140
+
+speed (mm/s)
+
+100
+
+60
+
+20
+
+0.5
+
+1.0
+
+1.5
+
+2.0
+
+nozzle inner diameter (mm)
+
+Figure 9: Average bead speed for fiber radius R = 0.1 mm (left) and R = 0.215 mm (right), and flow rates Qm = 0.04, 0.06, and 0.08 g/s from top to bottom, compared to the proposed model (FSM) as blue diamonds and Craster & Matar (CM) as red
+circles. The last two data points in (a) are in the isolated droplet regime. There is no plot for R = 0.215 mm, Qm = 0.08 g/s, because in this case there is no TWS and the experiments lie in the convective regime.
+
+the fiber radius R = 0.215 mm and the flow rate Qm = 0.08 g/s because under those conditions the flow is in the convective regime and the bead speed cannot be uniquely
+defined. We note that for the FSM model, we choose p to be 0.12 mm for the fiber of radius R = 0.1 mm, and p = 0.215 mm for the fiber of radius R = 0.215 mm.
+Note in Figure 9(a), the Rayleigh Plateau regime transitions to the isolated droplet
+
+Dynamics of thin liquid films on vertical cylindrical fibers
+
+17
+
+
+
+0
+
+(a)
+
+h* (mm)
+
+E0 10 20 30
+x*(mm)
+!
+
+0
+
+@
+
+h* (mm)
+
+
+0
+
+10
+
+
+
+Q
+
+x* (mm)
+
+Figure 10: Experiments (top black halves) with parameters R = 0.1 mm, Qm = 0.04 g/s against the FSM (bottom halves) showing (a) the Rayleigh-Plateau regime with nozzle
+ID = 0.8 mm and (b) the isolated droplet regime with nozzle ID = 1.8 mm.
+
+regime, where the TWS is unstable and both models over-predict the speed, as expected. The following section discusses this transition in detail.
+5.2. Regime Transition
+The emergence of instabilities in the thin liquid films between traveling droplets characterizes the transition from the Rayleigh-Plateau (RP) regime to the isolated droplet (IS) regime. Guided by the stability analysis from section 4, we can explore these instabilities and the departure from the RP regime as the nozzle diameter varies. The IS regime gives rise to time periodic dynamics that cannot be captured by the traveling wave solutions of (4.7). In this case, we need to solve the fully time-dependent model (3.14). The numerical solution and the experimental observation from the IS regime are plotted in Figure 10 (b). In contrast, the traveling wave solution for an RP experiment (ID = 0.8 mm) is plotted in Figure10 (a). Our dynamic simulation captures a difference in the advancing and receding lines of the droplets, even though this difference is more pronounced in the experiment.
+The nonlinear PDE (3.14) was solved numerically using a fully implicit second-order finite difference method. Figure 11 shows the dynamics starting from a widely spaced traveling wave solution obtained from the ODE (4.7) with a small perturbation, h0(x) = H(x)+0.001(x). This simulation corresponds to the IS regime experiment with the fiber radius R = 0.1 mm, flow rate Qm = 0.04 g/s and the nozzle diameter ID = 1.8 mm. It demonstrates the effects of the unstable eigenmodes shown in Figure 6 (right). Such instabilities lead to interesting spatio-temporal pattern formation with small droplets appearing from the unstable long flat film between the large traveling beads.
+The film stabilization model (FSM) correctly captures the bifurcation from the RP regime to the IS regime as the nozzle diameter increases. For small fiber size R = 0.1 mm at Qm = 0.04 g/s, experiments show that the regime transition occurs between nozzle inner diameters 1.2 mm and 1.5 mm (see Figure 9 (a)). However, the CM model predicts the transition between 0.8 mm and 1.06 mm, contradicting experimental observations. That is, based on stability analysis, the traveling wave solutions of the CM model are
+
+18
+
+H. Ji, C. Falcon, A. Sadeghpour, Z. Zeng, Y. S. Ju, A. L. Bertozzi
+
+(a)
+
+(b)
+
+(c)
+
+25 t* = 0.1 s
+
+25 t* = 0.34 s
+
+25 t* a "#$% &
+
+20
+
+20
+
+20
+
+x* (mm) x* (mm) x* (mm)
+
+15
+
+15
+
+15
+
+10
+
+10
+
+10
+
+5
+
+5
+
+5
+
+0 -3 0 3
+h* (mm)
+
+0 -3 0 3
+h* (mm)
+
+0 -3 0 3
+h* (mm)
+
+Figure 11: Dynamic simulation showing the development of instabilities in the isolated
+droplet regime for parameters R = 0.1 mm, Qm = 0.04 g/s, and nozzle size ID = 1.8 mm.
+
+(a) FSM
+
+(b) CM
+
+t
+
+t
+
+4
+
+4
+
+h  (mm) h  (mm)
+
+2
+
+2
+
+0 0 5 10 15 20
+x  (mm)
+
+0 0 5 10 15 20
+x  (mm)
+
+Figure 12: PDE simulations for (a) the FSM model (3.14) with p = 0.12 mm and (b) the CM model starting from h0(x) = H(x) with identical (M0, L) and small perturbations,
+showing that the TWS to the FSM model is stable in time, while the one for the CM model
+is unstable and converges to a time-periodic solution in the long time. The (M0, L) values are obtained from the experiment with fiber radius R = 0.1 mm, flow rate Qm = 0.04 g/s and nozzle ID = 1.2 mm.
+
+Dynamics of thin liquid films on vertical cylindrical fibers
+
+19
+
+1.15
+
+CM 1.1
+
+m ax ( h  ) (mm)
+
+1.05 1
+
+FSM
+
+0.95
+
+0
+
+0.5
+
+1
+
+1.5
+
+2
+
+2.5
+
+t  (s)
+
+Figure 13: Plots of max(h) in time for the PDE simulations shown in Figure 12.
+
+2 1.5 H1 0.5
+
+= 0  = 0.05
+ = 0.1 = 1
+
+1 c
+0.1
+
+' ( 1)
+
+y( )
+
+0
+
+0.01
+
+0
+
+1
+
+2
+
+3
+
+4
+
+5
+
+0.01
+
+0.1
+
+1
+
+10
+
+
+
+
+
+Figure 14: Traveling wave solutions of (4.7) for the SCM model with a varying slip length  = 0, 0.05, 0.1, 1 for (L, M0) = (4.94, 8.27) showing that (left) larger slip yields larger droplet heights and thinner precursor layers (right) in the weak slip limit the moving speed of drops is O(1), and the speed increases linearly with slip length in the large slip limit.
+
+unstable for all nozzles bigger than 0.8 mm. For example, for the case of the nozzle diameter ID = 1.2 mm, Figure 12 shows a comparison of dynamic simulation results of the CM and the FSM models. The traveling wave in the FSM model propagates steadily with a constant speed and profile (see the bottom curve in Figure 13). In contrast, the CM model simulation shows that the initially nearly-flat coating layer quickly evolves into small waves ahead of the major sliding bead. As the major bead interacts with the small waves downstream, the maximum height of the film thickness oscillates in time (see the top curve in Figure 13) since the main bead gains mass from these smaller waves. The dynamic solution eventually converges to a time-periodic solution that describes the case in the isolated droplet regime. A similar bifurcation occurs when keeping the nozzle diameter constant ID = 1.8 mm and changing the flow rate (not shown here). Again, just the FSM model correctly predicts regime transition between Qm = 0.050 g/s and Qm = 0.055 g/s, which agrees with experimental measurements. For larger fiber size R = 0.215 mm, both models produce a stable traveling wave for all nozzle sizes shown in Figure 9, i.e. there is no isolated phenomena predicted.
+5.3. The effects of slip and curvature
+We next study how the slip length  affects the flow characteristics under the slip model (SCM). It has been shown in Halpern & Wei (2017) that the presence of slip
+
+20
+
+H. Ji, C. Falcon, A. Sadeghpour, Z. Zeng, Y. S. Ju, A. L. Bertozzi
+
+Exper iment, speed = 39.54 (mm/s)
+
+2
+
+CM, speed = 35.4 (mm/s)
+
+SCM,   = 7( µ m), speed = 36.71 (mm/s)
+
+FCM,   = 7( µ m) speed = 39.43 (mm/s)
+
+1.5
+
+H 1
+
+0.5
+
+0
+
+0
+
+L/ 2
+
+L
+
+
+
+Figure 15: A comparison of traveling wave solutions to (4.7) from the original Craster &
+Matar model (CM), the Slip Craster & Matar model (SCM), the Full Curvature Model
+(FCM) and the experimental observation showing that while the solutions profiles from
+each models are close, the estimated bead velocity predicted by the FCM matches the best
+with the experimental result. The bead profile is obtained from the thick fiber experiment with R = 0.215 mm, flow rate Qm = 0.04 g/s, and the inner nozzle diameter ID = 1.06 mm. The corresponding non-dimensional constraints are given by (L, M0) = (4.94, 8.92).
+
+125
+
+1()
+
+speed (mm/s)
+
+75
+
+50
+25 0.5
+
+Exper iment CM
+SCM FCM
+
+1
+
+1.5
+
+2
+
+nozzle inner diameter (mm)
+
+Figure 16: Average bead speed obtained from experiments with R = 0.1 mm and Qm = 0.06 g/s, compared to the speed predicted by the original CM model, the SCM model
+with  = 3 µm, and the FCM model with  = 3 µm.
+
+enhances capillary instability and promotes both droplet formation and the speed of the falling drops. Similar observations are also made in our study of traveling wave solutions for given (L, M0) in Figure 14. We observe that compared with the no-slip case, the slip cases ( = 0) have taller and narrower droplets. The dependence of the speed c on the slip length  in Figure 14 (right) agrees with the observation in Halpern & Wei (2017). The speed of traveling wave solutions is of order O(1) in the weak slip limit and grows linearly with  in the strong slip limit. Since typical slip length  is 1 - 10 µm for silicone oil, and typical Nusselt film thickness H is about 0.5 mm in our experiments, our experimental conditions are expected to be in the weak slip limit.
+Similar to the slip model, the inclusion of the fully nonlinear curvature term in the
+
+Dynamics of thin liquid films on vertical cylindrical fibers
+
+21
+
+FCM model with Z(h) given by (3.17) also increases the moving speed of sliding droplets. Figure 15 shows a comparison of the experimental bead profile against those obtained from the Craster & Matar model (CM), the slip model (SCM) with the linear azimuthal term in (3.15), and the full curvature model (FCM) with the full azimuthal curvature term in (3.17). Under the period and mass constraint, whereas the different models all yield solution profiles similar to the experimental result, the predicted speed obtained from the ODE (4.7) is increased when the slippage effects and full curvature term are included, and the FCM model with the slip length  = 7 µm provides the best agreement with the experiment.
+While the slip and the full curvature do influence predicted wave propagation velocities, their corrections alone are not sufficient to improve agreement with the experimental data. Figure 16 shows that for the thin fiber case (R = 0.1 mm), the CM and SCM models underestimate the bead velocities for all nozzle sizes. Even though the FCM model yields a good agreement with the experiment for small nozzles, it overestimates the speed for large nozzles. Similar trends are observed for the thick fiber case (R = 0.215 mm) (not shown here). In these cases, the film stabilization term becomes vital for correctly predicting speeds and the regime transition, as discussed in section 5.1.
+
+6. Conclusion
+We have performed a thorough study of viscous flow down vertical fibers, comparing a range of experimental results to different models of interest. We focus on understanding the Rayleigh-Plateau (RP) regime, where traveling wave solutions emerge, and its transition to the isolated droplet (IS) regime due to nozzle effects. We propose a full model that incorporates the stability of thin uniform layers by including a film stabilization (FSM) term to the pressure. In this paper, experiments are compared to versions of a lubrication model, showing the influences of slip effects, nonlinear azimuthal curvature and the FSM term on predicted bead velocities and film profiles. In addition, we perform a stability analysis of the traveling wave solutions(TWS) that confirms the importance of the FSM term to properly capture regime transitions. The model equations lead to both closely spaced wavy solutions and widely spaced droplet solutions which are affected by different fiber sizes, flow rates, and nozzle geometry. The slip model (SCM) leads to an increased speed of propagation and promotes formation of droplets. The full curvature model (FCM) also increases the magnitude of the bead velocity, while the FSM model stabilizes the thin undisturbed layer between consecutive droplets which leads to a more accurate speed prediction. Our results show outstanding experimental agreement using the FSM's TWS in the RP regime. In the isolated droplet regime, dynamic simulations of widely spaced droplet solutions agrees very well with experiments.
+For future work, we are interested in the nozzle effects on the global modes (Duprat et al. (2007)) of the absolutely unstable flows in RP and IS regimes. Of particular interest would be the selection of spacing between moving beads with a given nozzle diameter. Duprat et al. (2009) investigated the spatial response of a film flowing down a fiber to inlet forcing using a system of coupled equations for the flow rate and the film thickness. We anticipate that a similar model can be used to study the nozzle effects. Moreover, the nozzle effects in our experiments are also related to the dripping faucet problem (Coullet et al. (2005); Dreyer & Hickey (1991)) which studies the chaotic behavior of a dripping faucet. Motivated by these theories, in the future we would like to further study the connection between the fluid dynamics near the nozzle and its influence on the downstream flow transitions.
+In addition, our experimental observations with different fluids, not published here,
+
+22
+
+H. Ji, C. Falcon, A. Sadeghpour, Z. Zeng, Y. S. Ju, A. L. Bertozzi
+
+Definition
+
+Symbol Thin fiber
+
+Radius of the fiber (mm)
+
+R
+
+sample flow rate (g/s)
+
+
+Qm
+
+nozzle inner diameter (mm)
+
+ID
+
+average maximum height (mm)
+
+
+hm
+
+lengthscale in radial direction (mm)
+
+H
+
+lengthscale in streamwise direction (mm)
+
+L
+
+characteristic streamwise velocity (mm/s)
+
+U
+
+capillary length (mm)
+
+lc
+
+0.100 0.080 0.6 - 1.8 0.8 - 1.0 0.589 1.091 67.89 1.485
+
+aspect ratio H/R slip length scaling parameter (H/L)2 uniform layer thickness stabilization parameter mass constraint period speed of TWS Reynolds number Weber number
+
+
+
+5.886
+
+
+
+0.012
+
+
+
+0.291
+
+p
+
+0.204
+
+A
+
+0.014
+
+M0
+
+14 - 26
+
+L
+
+4-9
+
+c
+
+0.10 - 0.15
+
+Re
+
+1.481
+
+We
+
+2.522
+
+Table 2: Nomenclature and their sample values.
+
+Thick fiber
+0.215 0.040 0.6 - 3.0 0.6 - 0.8 0.494 1.029 47.87 1.485
+2.299 0.014 0.231 0.435 0.068 6 - 13 3-8 0.18 - 0.27 0.985 3.004
+
+show that the nonlinear dynamics can change quite drastically, and choosing the appropriate coating thickness p is an interesting question for further study. For p of the same order of the fiber radius, the value of the stabilization parameter A is between 10-11 and 10-12 Nm, which is much larger than typical values of Hamaker constant between 10-19 and 10-21Nm. This indicates that the film stabilization term in our model is stronger
+than typical van der Waals interactions, and the underlying physics still needs future
+investigation.
+This work was supported by the Simons Foundation Math+X investigator award
+number 510776 and the National Science Foundation under grant CBET-1358034.
+
+Appendix A. Nomenclature
+In Table 2, we show the relevant nomenclature and the corresponding values given a sample flow rate for thin and thick fibers. The first portion of the table shows dimensional parameters and their units, while the bottom part of the table shows the selected nondimensional scales.
+
+Appendix B. Nozzle effects
+Motivated by the different regimes shown in Figure 9, we review the details of the dependence of bead speeds on its spacing and mass constraint, and their relations to the nozzle diameters. It has been empirically shown in Sadeghpour et al. (2017) that when other experimental parameters are fixed, the nozzle diameter determines the spacing and mass constraint for the traveling beads. Typical ranges for the mass constraint and period with increasing nozzle inner diameter are shown in Table 2.
+The plot in Figure 17 (right) shows the traveling wave speeds parametrized by a range of values for the dimensional period L to examine the impact of large versus small
+
+(mm2)
+
+Dynamics of thin liquid films on vertical cylindrical fibers
+
+23
+
+simulation experiment
+
+V
+
+L  (mm)
+
+speed (mm/s)
+
+6
+70
+
+4
+
+0
+
+1
+
+2
+
+3
+
+50
+
+60
+
+30
+
+ 0
+
+M
+
+50
+
+10
+
+60
+
+40 50
+
+30
+
+345
+
+40 M  (mm2 )
+
+0
+
+0
+
+1
+
+2
+
+3
+
+67
+
+30
+
+L  (mm)
+
+89
+
+inner nozzle diameters (mm)
+
+1020
+
+Figure 17: (Left) The experimentally measured relations between the dimensional L, M0, and the nozzle inner diameters for fiber radius R = 0.215 mm at flow rate Qm = 0.04 g/s; (Right) the predicted speed of traveling wave solutions to the film stabilization
+model (FSM) in comparison with the corresponding experimental results (large dots) with varying M 0 and L.
+
+bead spacings. We also use a range of values for M 0 to study the influence of bead sizes on its velocity. For each calculation with a given dimensional (L, M0), the numerically obtained traveling wave speed from the film stabilization model is labeled by a small
+dot. For a fixed fiber radius at a given flow rate, the diameter of the nozzle feeding the fluid selects the (L, M0) pair. To illustrate this connection, Figure 17 (right) shows the experimental traveling bead velocities in large dots, for different nozzle sizes which correspond to specific (L, M0) pairs. These results refer to experiments with fiber radius R = 0.215 mm at flow rate Qm = 0.04g/s, and the measured relations between L, M0, and the nozzle inner diameter are shown in Figure 17 (left). The nozzle diameter ranges from 0.6 mm to 3.0 mm. The period L and the mass M 0 both increase as the nozzle diameter increases, and the predicted traveling wave speeds show good agreement with
+the experimental results.
+
+REFERENCES
+Bonn, Daniel, Eggers, Jens, Indekeu, Joseph, Meunier, Jacques & Rolley, Etienne 2009 Wetting and spreading. Reviews of modern physics 81 (2), 739.
+Chang, Hsueh-Chia & Demekhin, Evgeny A 1999 Mechanism for drop formation on a coated vertical fibre. Journal of Fluid Mechanics 380, 233-255.
+Chao, Youchuang, Ding, Zijing & Liu, Rong 2018 Dynamics of thin liquid films flowing down the uniformly heated/cooled cylinder with wall slippage. Chemical Engineering Science 175, 354-364.
+Chinju, Hirofumi, Uchiyama, Kazunori & Mori, Yasuhiko H 2000 string-of-beads flow of liquids on vertical wires for gas absorption. AIChE journal 46 (5), 937-945.
+Coullet, P., Mahadevan, L. & Riera, C. S. 2005 Hydrodynamical models for the chaotic dripping faucet. Journal of Fluid Mechanics 526, 1-17.
+Craster, RV & Matar, OK 2006 On viscous beads flowing down a vertical fibre. Journal of Fluid Mechanics 553, 85-105.
+Craster, R. V. & Matar, O. K. 2009 Dynamics and stability of thin liquid films. Reviews of Modern Physics 81 (3), 1131.
+Dreyer, K. & Hickey, F. R. 1991 The route to chaos in a dripping water faucet. American Journal of Physics 59 (7), 619-627.
+
+24
+
+H. Ji, C. Falcon, A. Sadeghpour, Z. Zeng, Y. S. Ju, A. L. Bertozzi
+
+Duprat, C, Ruyer-Quil, C & Giorgiutti-Dauphin´e, F 2009 Spatial evolution of a film flowing down a fiber. Physics of Fluids 21 (4), 042109.
+Duprat, C, Ruyer-Quil, C, Kalliadasis, S & Giorgiutti-Dauphin´e, F 2007 Absolute and convective instabilities of a viscous film flowing down a vertical fiber. Physical review letters 98 (24), 244502.
+Frenkel, AL 1992 Nonlinear theory of strongly undulating thin films flowing down vertical cylinders. EPL (Europhysics Letters) 18 (7), 583.
+de Gennes, P. G. 1985 Wetting: statics and dynamics. Rev. Mod. Phys. 57, 827-863. Haefner, Sabrina, Benzaquen, Michael, Ba¨umchen, Oliver, Salez, Thomas, Peters,
+Robert, McGraw, Joshua D, Jacobs, Karin, Rapha¨el, Elie & Dalnoki-Veress, Kari 2015 Influence of slip on the Plateau-Rayleigh instability on a fibre. Nature communications 6, 7409.
+Halpern, David & Wei, Hsien-Hung 2017 Slip-enhanced drop formation in a liquid falling down a vertical fibre. Journal of Fluid Mechanics 820, 42-60.
+Israelachvili, Jacob N 2011 Intermolecular and surface forces. Academic press.
+Kalliadasis, Serafim & Chang, Hsueh-Chia 1994 Drop formation during coating of vertical fibres. Journal of Fluid Mechanics 261, 135-168.
+Kalliadasis, Serafim, Ruyer-Quil, Christian, Scheid, Benoit & Velarde, Manuel Garc´ia 2011 Falling liquid films, , vol. 176. Springer Science & Business Media.
+Kliakhandler, IL, Davis, SH & Bankoff, SG 2001 Viscous beads on vertical fibre. Journal of Fluid Mechanics 429, 381-390.
+Lopes, A. von Borries, Thiele, U. & Hazel, A. L. 2018 On the multiple solutions of coating and rimming flows on rotating cylinders. Journal of Fluid Mechanics 835, 540-574.
+Mu¨nch, Andreas, Wagner, BA & Witelski, Thomas P 2005 Lubrication models with small to large slip lengths. Journal of Engineering Mathematics 53 (3-4), 359-383.
+Oron, Alexander & Bankoff, S George 2001 Dynamics of a condensing liquid film under conjoining/disjoining pressures. Physics of Fluids 13 (5), 1107-1117.
+Oron, Alexander, Davis, Stephen H. & Bankoff, S. George 1997 Long-scale evolution of thin liquid films. Rev. Mod. Phys. 69, 931-980.
+Qu´er´e, D 1990 Thin films flowing on vertical fibers. EPL (Europhysics Letters) 13 (8), 721. Qu´er´e, David 1999 Fluid coating on a fiber. Annual Review of Fluid Mechanics 31 (1), 347-384. Qu´er´e, D, di Meglio, J-M & Brochard-Wyart, F 1989 Making van der Waals films on
+fibers. EPL (Europhysics Letters) 10 (4), 335.
+Reisfeld, B & Bankoff, SG 1992 Non-isothermal flow of a liquid film on a horizontal cylinder. Journal of Fluid Mechanics 236, 167-196.
+Ruyer-Quil, Christian & Kalliadasis, Serafim 2012 Wavy regimes of film flow down a fiber. Physical Review E 85 (4), 046302.
+Ruyer-Quil, C, Treveleyan, P, Giorgiutti-Dauphin´e, F, Duprat, C & Kalliadasis, S 2008 Modelling film flows down a fibre. Journal of Fluid Mechanics 603, 431-462.
+Ruyer-Quil, C, Trevelyan, SPMJ, Giorgiutti-Dauphin´e, F, Duprat, C & Kalliadasis, S 2009 Film flows down a fiber: Modeling and influence of streamwise viscous diffusion. The European Physical Journal Special Topics 166 (1), 89-92.
+Sadeghpour, Abolfazl, Zeng, Zezhi & Ju, Y Sungtaek 2017 Effects of nozzle geometry on the fluid dynamics of thin liquid films flowing down vertical strings in the Rayleigh-Plateau regime. Langmuir 33, 6292-6299.
+Sisoev, Grigori M, Craster, Richard V, Matar, Omar K & Gerasimov, Sergei V 2006 Film flow down a fibre at moderate flow rates. Chemical engineering science 61 (22), 7279-7298.
+Smolka, Linda B, North, Justin & Guerra, Bree K 2008 Dynamics of free surface perturbations along an annular viscous film. Physical Review E 77 (3), 036301.
+Snoeijer, J. H. 2006 Free-surface flows with large slopes: Beyond lubrication theory. Physics of Fluids 18 (2), 021701.
+Thiele, Uwe 2011 On the depinning of a drop of partially wetting liquid on a rotating cylinder. Journal of Fluid Mechanics 671, 121-136.
+Thiele, U. 2018 Recent advances in and future challenges for mesoscopic hydrodynamic
+
+Dynamics of thin liquid films on vertical cylindrical fibers
+
+25
+
+modelling of complex wetting. Colloids and Surfaces A: Physicochemical and Engineering Aspects .
+Trifonov, Yu & others 1992 Steady-state traveling waves on the surface of a viscous liquid film falling down on vertical wires and tubes. AIChE journal 38 (6), 821-834.
+Yu, Liyan & Hinch, John 2013 The velocity of largeviscous drops falling on a coated vertical fibre. Journal of Fluid Mechanics 737, 232-248.
+Zeng, Zezhi, Sadeghpour, Abolfazl, Warrier, Gopinath & Ju, Y Sungtaek 2017 Experimental study of heat transfer between thin liquid films flowing down a vertical string in the Rayleigh-Plateau instability regime and a counterflowing gas stream. International Journal of Heat and Mass Transfer 108, 830-840.
+
+
