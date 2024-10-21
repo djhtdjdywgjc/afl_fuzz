@@ -58,8 +58,8 @@ def load_code_from_url(url, download_directory):
 
     if os.path.isdir(download_directory):
         return filename
-    
-    print("-------------------------",download_directory)
+
+    print("-----------")
     os.makedirs(download_directory)
     
     # entry download_directory
@@ -95,43 +95,17 @@ def load_code_from_url(url, download_directory):
     return filename
 
 def unzip_file(zip_path, extract_to):
-    # 获取文件名称和扩展名
+    os.makedirs(extract_to)
+    print("zip_path: " + zip_path)
+    print("extract_to: " + extract_to)
+    # split url to get name info 
     compress_file_name = zip_path.rsplit('/', 1)[-1]
     filename = compress_file_name.rsplit('.', 1)[0]
-    print("--------------------",filename) 
-    if os.path.isdir(extract_to):
-        return filename
-
-    os.makedirs(extract_to)
-    os.chdir(extract_to)
-    # 判断文件类型
-    if compress_file_name.endswith('.zip'):
-        # 如果是 zip 文件，用 zipfile 解压
-        print("----------------",os.getcwd())
-        os.makedirs(filename)
-        os.chdir(filename)
-        with zipfile.ZipFile(zip_path, 'r') as zip_ref:
-            zip_ref.extractall(os.getcwd())
-        output_info(f"ZIP file has been extracted to {extract_to}")
-        os.chdir("..")
-        os.chdir("..")
-
-    elif compress_file_name.endswith('.tar.gz') or compress_file_name.endswith('.tgz'):
-        # 如果是 tar.gz 文件，用 tar 命令解压
-        try:
-            extract_command = ["tar", "-xvzf", zip_path]
-            result = subprocess.run(extract_command, capture_output=True, text=True, check=True)
-            output_info(f"Tar file has been extracted to {extract_to}")
-        except subprocess.CalledProcessError as e:
-            print('Return code:', e.returncode)
-            print('Error reason:', e.stderr)
-            err(f"Failed to extract tar file: {compress_file_name}")
-    else:
-        print("Unsupported file format.")
-        return None
-
-    print("Extracted to -> ", extract_to)
-    print("Filename -> ", filename)
+    with zipfile.ZipFile(zip_path, 'r') as zip_ref:
+        zip_ref.extractall(extract_to)
+    output_info(f"File has been extracted to {extract_to}")
+    print("ddddd -> ",extract_to)
+    print("aaaaa -> ",filename)
     return filename
 
 def afl_args_handle():
@@ -153,6 +127,8 @@ def afl_args_handle():
     json_args.append( "-fuzz_target")
     for value in fuzz_target:
         json_args.append(str(value))
+    json_args.append("-source_code")
+    json_args.append(source_code)
     json_args.append( "-compile_setting")
     json_args.append(compile_setting)
     return json_args
@@ -163,6 +139,7 @@ def main():
     global source_code_path
     global program_name
     global json_data
+    global source_code
     # get url info from json
     if len(sys.argv) < 2:
         print("[*] The agent requires a parameter that specifies the path to the JSON file.")
@@ -181,6 +158,7 @@ def main():
     # traverse json_data to get key & value pairs
     download_url = get_json_value(json_data, "url")
     source_code_path = get_json_value(json_data, "source_code_path")
+    source_code = get_json_value(json_data,"source_code")
 
     if download_url == "" and source_code_path == "":
         err("The agent require source code url or file")
@@ -198,6 +176,7 @@ def main():
 
     # unzip source.zip if url not exist
     if source_code_path != "":
+        print(download_directory)
         file_name += unzip_file(source_code_path, download_directory)
 
     # extract fuzz settings from data.json and transfer to demo.py
@@ -210,6 +189,7 @@ def main():
     demo_args.append(download_directory)
     demo_args.append('-file')
     demo_args.append(file_name)
+    # print(demo_args)
     subprocess.run(demo_args, check=True)
 
 if __name__ == '__main__':
