@@ -16,6 +16,7 @@ input_dir = "../input"
 fuzz_binary = sys.argv[1]
 binary_name = os.path.basename(fuzz_binary)  # 提取二进制文件名，不包括路径
 run_time = sys.argv[2]
+source_code = sys.argv[4]
 task_id = sys.argv[3] if len(sys.argv) > 3 else ""
 output_dir = f"../{task_id}output_{binary_name}"  # 根据二进制文件名生成输出目录名
 
@@ -27,10 +28,19 @@ os.makedirs(output_dir)
 # 运行 afl-fuzz
 def run_afl_fuzz():
     global afl_process
-    afl_process = subprocess.Popen(
-        ["timeout", run_time, afl, "-i", input_dir, "-o", output_dir, "-s", "123", "-m", "none", "--", fuzz_binary, "@@"],
-        preexec_fn=os.setsid
-    )
+    if source_code == "":
+        afl_process = subprocess.Popen(
+            ["timeout", run_time, afl, "-i", input_dir, "-o", output_dir, "-s", "123", "-m", "none", "--", fuzz_binary, "@@"],
+            preexec_fn=os.setsid
+        )
+    else:
+        print(source_code)
+        source_code_list = source_code.split()
+        afl_process = subprocess.Popen(
+            ["timeout", run_time, afl, "-i", input_dir, "-o", output_dir, "-s", "123", "-m", "none", "--",fuzz_binary] +  source_code_list + ["@@"],
+            preexec_fn=os.setsid
+        )
+
 
 def signal_handler(signum, frame):
     print("Stopping afl-fuzz...")
@@ -332,7 +342,7 @@ for crash_file in os.listdir(crash_dir):
             if code_path[0] == "/":
                 with open(code_path, 'r') as f:
                     for i in range(int(code_line) + 6):
-                        code = f.readline()
+                        code = str(i+1) + '  ' + f.readline()
                         if i > int(code_line) - 5:
                             code_all += code
             else:
@@ -354,7 +364,8 @@ for crash_file in os.listdir(crash_dir):
                 "total_discovery_count": 0,  # 使用 bug_occurrences 记录次数
                 "risk_code_display_file": code_all,
                 "asan_report_file": asn_output,
-                "crash_file_path": crash_file_path
+                "crash_file_path": crash_file_path,
+                "high_light" : code_line
             }
             bugs_found.append(bug)
 

@@ -11,6 +11,7 @@ file_name = ""
 CXX_module = ""
 install_path = ""
 download_directory = ""
+source_code = ""
 compile_setting = ""
 edit_params = [] # complie args
 fuzzer_args = [] # afl-fuzz args
@@ -44,6 +45,7 @@ def compile_args_handle():
     global download_directory
     global fuzz_time
     global compile_setting
+    global source_code
 
     i = 1
     while i < len(sys.argv):
@@ -77,6 +79,11 @@ def compile_args_handle():
             i += 2
             continue
         
+        elif sys.argv[i] == "-source_code":
+            source_code += sys.argv[i+1]
+            i+=1
+            continue
+
         elif sys.argv[i] == "-fuzz_time":
             if i + 1 >= len(sys.argv):
                 err("not find fuzz_time!")
@@ -208,6 +215,7 @@ def construct_fuzzer_args(fuzzing_elf_target_path, task_id):
     fuzzer_args.append(fuzzing_elf_target_path)
     fuzzer_args.append(fuzz_time)
     fuzzer_args.append(task_id)
+    fuzzer_args.append(source_code)
     return fuzzer_args
 
 def process_fuzz(fuzzer_args):
@@ -215,8 +223,6 @@ def process_fuzz(fuzzer_args):
     """child process tast"""
     print(f'Fuzzing worker {fuzz_target_name} started...')
     try:
-        print(fuzzer_args)
-        print(os.getcwd())
         result = subprocess.run(fuzzer_args)
     except subprocess.CalledProcessError as e:
         err("Fail to open mulprocess to fuzz")
@@ -264,7 +270,6 @@ def main():
 
     # compile source code with afl
     output_info("default intall path is:" + install_path)
-    print(edit_params)
     compile_target_with_afl()
 
     # create multiple process begin to fuzz
