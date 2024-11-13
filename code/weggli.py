@@ -39,6 +39,7 @@ import string
 import tempfile
 import signal
 import time
+import json
 #reload(sys)
 #sys.setdefaultencoding("utf-8")
 
@@ -224,6 +225,8 @@ def unzip_cab_file():
     print('\n')
 
 def weggli_code_check():
+    sum_ = 0
+    code = dict()
     print ("-----------------------------------------------------------------")
     print ("-----------------------------------------------------------------",file=f)
     print ("c/c++源码审计...")
@@ -242,8 +245,9 @@ def weggli_code_check():
         print('超时自动结束任务...')
     out_temp.seek(0)
     rt = out_temp.read()
-    print (rt)
-    print (rt,file=f)
+    if rt != "":
+        # code[]
+        print(1)
     out_temp.close()
 
     print ("-----------------------------------------------------------------",file=f)
@@ -262,8 +266,18 @@ def weggli_code_check():
         print('超时自动结束任务...')
     out_temp.seek(0)
     rt = out_temp.read()
-    print (rt)
-    print (rt,file=f)
+
+    if rt != "":
+        key = "code" + str(sum_)
+        sum_ += 1
+        value = ""
+        for line in rt.splitlines():
+            if line[0:1] == '/':
+                value += line.split('.',1)[1] + '\n'
+            else:
+                value += line + '\n'
+        code[key] = "潜在易受攻击的snprintf()\n" + value
+
     out_temp.close()
     
     print ("-----------------------------------------------------------------",file=f)
@@ -283,8 +297,18 @@ def weggli_code_check():
     
     out_temp.seek(0)
     rt = out_temp.read()
-    print (rt)
-    print (rt,file=f)
+
+    if rt != "":
+        key = "code" + str(sum_)
+        sum_ += 1
+        value = ""
+        for line in rt.splitlines():
+            if line[0:1] == '/':
+                value += line.split('.',1)[1] + '\n' + '\n'
+            else:
+                value += line + '\n'
+        code[key] = "复制到目标的大小1\n" + value
+
     out_temp.close()
     
     print ("-----------------------------------------------------------------",file=f)
@@ -303,8 +327,18 @@ def weggli_code_check():
         print('超时自动结束任务...')
     out_temp.seek(0)
     rt = out_temp.read()
-    print (rt)
-    print (rt,file=f)
+
+    if rt != "":
+        key = "code" + str(sum_)
+        sum_ += 1
+        value = ""
+        for line in rt.splitlines():
+            if line[0:1] == '/':
+                value += line.split('.',1)[1] + '\n'
+            else:
+                value += line + '\n'
+        code[key] = "复制到目标的大小2\n" + value
+
     out_temp.close()
     
     print ("-----------------------------------------------------------------",file=f)
@@ -323,8 +357,18 @@ def weggli_code_check():
         print('超时自动结束任务...')
     out_temp.seek(0)
     rt = out_temp.read()
-    print (rt)
-    print (rt,file=f)
+
+    if rt != "":
+        key = "code" + str(sum_)
+        sum_ += 1
+        value = ""
+        for line in rt.splitlines():
+            if line[0:1] == '/':
+                value += line.split('.',1)[1] + '\n'
+            else:
+                value += line + '\n'
+        code[key] = "复制到目标的大小3\n" + value
+
     out_temp.close()
     
     print ("-----------------------------------------------------------------",file=f)
@@ -343,8 +387,18 @@ def weggli_code_check():
         print('超时自动结束任务...')
     out_temp.seek(0)
     rt = out_temp.read()
-    print (rt)
-    print (rt,file=f)
+
+    if rt != "":
+        key = "code" + str(sum_)
+        sum_ += 1
+        value = ""
+        for line in rt.splitlines():
+            if line[0:1] == '/':
+                value += line.split('.',1)[1] + '\n'
+            else:
+                value += line + '\n'
+        code[key] = "调用写入堆栈缓冲区的 memcpy\n" + value
+
     out_temp.close()
 
     print ("-----------------------------------------------------------------",file=f)
@@ -363,8 +417,18 @@ def weggli_code_check():
         print('超时自动结束任务...')
     out_temp.seek(0)
     rt = out_temp.read()
-    print (rt)
-    print (rt,file=f)
+
+    if rt != "":
+        key = "code" + str(sum_)
+        sum_ += 1
+        value = ""
+        for line in rt.splitlines():
+            if line[0:1] == '/':
+                value += line.split('.',1)[1] + '\n'
+            else:
+                value += line + '\n'
+        code[key] = "不检查返回值的 foo 调用\n" + value
+
     out_temp.close()
 
     print ("-----------------------------------------------------------------",file=f)
@@ -383,8 +447,18 @@ def weggli_code_check():
         print('超时自动结束任务...')
     out_temp.seek(0)
     rt = out_temp.read()
-    print (rt)
-    print (rt,file=f)
+
+    if rt != "":
+        key = "code" + str(sum_)
+        sum_ += 1
+        value = ""
+        for line in rt.splitlines():
+            if line[0:1] == '/':
+                value += line.split('.',1)[1] + '\n'
+            else:
+                value += line + '\n'
+        code[key] = "可能未初始化的指针" + value
+
     out_temp.close()
 
     print ("-----------------------------------------------------------------",file=f)
@@ -403,8 +477,18 @@ def weggli_code_check():
         print('超时自动结束任务...')
     out_temp.seek(0)
     rt = out_temp.read()
-    print (rt)
-    print (rt,file=f)
+
+    if rt != "":
+        key = "code" + str(sum_)
+        sum_ += 1
+        value = ""
+        for line in rt.splitlines():
+            if line[0:1] == '/':
+                value += line.split('.',1)[1] + '\n'
+            else:
+                value += line + '\n'
+        code[key] = "潜在不安全的 WeakPtr 用法\n" + value
+
     out_temp.close()
 
     print ("-----------------------------------------------------------------",file=f)
@@ -423,8 +507,18 @@ def weggli_code_check():
         print('超时自动结束任务...')
     out_temp.seek(0)
     rt = out_temp.read()
-    print (rt)
-    print (rt,file=f)
+
+    if rt != "":
+        key = "code" + str(sum_)
+        sum_ += 1
+        value = ""
+        for line in rt.splitlines():
+            if line[0:1] == '/':
+                value += line.split('.',1)[1] + '\n'
+            else:
+                value += line + '\n'
+        code[key] = "基于函数参数执行写入堆栈缓冲区的函数\n" + value
+
     out_temp.close()
 
     print ("-----------------------------------------------------------------",file=f)
@@ -443,8 +537,18 @@ def weggli_code_check():
         print('超时自动结束任务...')
     out_temp.seek(0)
     rt = out_temp.read()
-    print (rt)
-    print (rt,file=f)
+
+    if rt != "":
+        key = "code" + str(sum_)
+        sum_ += 1
+        value = ""
+        for line in rt.splitlines():
+            if line[0:1] == '/':
+                value += line.split('.',1)[1] + '\n'
+            else:
+                value += line + '\n'
+        code[key] = "名称中带有字符串 decode 的函数\n" + value
+
     out_temp.close()
 
     print ("-----------------------------------------------------------------",file=f)
@@ -463,8 +567,18 @@ def weggli_code_check():
         print('超时自动结束任务...')
     out_temp.seek(0)
     rt = out_temp.read()
-    print (rt)
-    print (rt,file=f)
+
+    if rt != "":
+        key = "code" + str(sum_)
+        sum_ += 1
+        value = ""
+        for line in rt.splitlines():
+            if line[0:1] == '/':
+                value += line.split('.',1)[1] + '\n'
+            else:
+                value += line + '\n'
+        code[key] = "kmalloc乘法溢出\n" + value
+
     out_temp.close()
 
     print ("-----------------------------------------------------------------",file=f)
@@ -483,8 +597,18 @@ def weggli_code_check():
         print('超时自动结束任务...')
     out_temp.seek(0)
     rt = out_temp.read()
-    print (rt)
-    print (rt,file=f)
+
+    if rt != "":
+        key = "code" + str(sum_)
+        sum_ += 1
+        value = ""
+        for line in rt.splitlines():
+            if line[0:1] == '/':
+                value += line.split('.',1)[1] + '\n'
+            else:
+                value += line + '\n'
+        code[key] = "malloc乘法溢出\n" + value
+
     out_temp.close()
 
     print ("-----------------------------------------------------------------",file=f)
@@ -503,8 +627,18 @@ def weggli_code_check():
         print('超时自动结束任务...')
     out_temp.seek(0)
     rt = out_temp.read()
-    print (rt)
-    print (rt,file=f)
+
+    if rt != "":
+        key = "code" + str(sum_)
+        sum_ += 1
+        value = ""
+        for line in rt.splitlines():
+            if line[0:1] == '/':
+                value += line.split('.',1)[1] + '\n'
+            else:
+                value += line + '\n'
+        code[key] = "kmalloc分配中发生的溢出，而不是在使用中发生的溢出\n" + value
+
     out_temp.close()
 
     print ("-----------------------------------------------------------------",file=f)
@@ -523,8 +657,18 @@ def weggli_code_check():
         print('超时自动结束任务...')
     out_temp.seek(0)
     rt = out_temp.read()
-    print (rt)
-    print (rt,file=f)
+
+    if rt != "":
+        key = "code" + str(sum_)
+        sum_ += 1
+        value = ""
+        for line in rt.splitlines():
+            if line[0:1] == '/':
+                value += line.split('.',1)[1] + '\n'
+            else:
+                value += line + '\n'
+        code[key] = "malloc分配中发生的溢出，而不是在使用中发生的溢出\n" + value
+
     out_temp.close()
 
     print ("-----------------------------------------------------------------",file=f)
@@ -543,8 +687,18 @@ def weggli_code_check():
         print('超时自动结束任务...')
     out_temp.seek(0)
     rt = out_temp.read()
-    print (rt)
-    print (rt,file=f)
+
+    if rt != "":
+        key = "code" + str(sum_)
+        sum_ += 1
+        value = ""
+        for line in rt.splitlines():
+            if line[0:1] == '/':
+                value += line.split('.',1)[1] + '\n'
+            else:
+                value += line + '\n'
+        code[key] = "C中的一个典型错误是使用sizeof(ptr)而不是sizeof(type of the pointed thing)\n" + value
+
     out_temp.close()
 
     print ("-----------------------------------------------------------------",file=f)
@@ -563,8 +717,18 @@ def weggli_code_check():
         print('超时自动结束任务...')
     out_temp.seek(0)
     rt = out_temp.read()
-    print (rt)
-    print (rt,file=f)
+
+    if rt != "":
+        key = "code" + str(sum_)
+        sum_ += 1
+        value = ""
+        for line in rt.splitlines():
+            if line[0:1] == '/':
+                value += line.split('.',1)[1] + '\n'
+            else:
+                value += line + '\n'
+        code[key] = "变长数组风险；如果长度大于堆栈大小，则会发生堆栈溢出" + value
+
     out_temp.close()
  
     print ("-----------------------------------------------------------------",file=f)
@@ -583,13 +747,23 @@ def weggli_code_check():
         print('超时自动结束任务...')
     out_temp.seek(0)
     rt = out_temp.read()
-    print (rt)
-    print (rt,file=f)
+
+    if rt != "":
+        key = "code" + str(sum_)
+        sum_ += 1
+        value = ""
+        for line in rt.splitlines():
+            if line[0:1] == '/':
+                value += line.split('.',1)[1] + '\n'
+            else:
+                value += line + '\n'
+        code[key] = "释放堆栈分配变量\n" + value
+
     out_temp.close()
 
     print ("-----------------------------------------------------------------",file=f)
     print ("-----------------------------------------------------------------")
-    cmd = "weggli --unique -R '$op=\+\+|--' 'if ( _ && _ $op)' ."
+    cmd = "weggli --unique -R '$op=\+\+|--' 'if ( _ && $op)' ."
     print ("Shady-looking side-effects,cmd = ",cmd)
     print ("Shady-looking side-effects,cmd = ",cmd,file=f)
     out_temp = tempfile.TemporaryFile(mode='w+')
@@ -603,8 +777,18 @@ def weggli_code_check():
         print('超时自动结束任务...')
     out_temp.seek(0)
     rt = out_temp.read()
-    print (rt)
-    print (rt,file=f)
+
+    if rt != "":
+        key = "code" + str(sum_)
+        sum_ += 1
+        value = ""
+        for line in rt.splitlines():
+            if line[0:1] == '/':
+                value += line.split('.',1)[1] + '\n'
+            else:
+                value += line + '\n'
+        code[key] = "Shady-looking side-effects\n" + value
+
     out_temp.close()
 
     print ("-----------------------------------------------------------------",file=f)
@@ -623,8 +807,18 @@ def weggli_code_check():
         print('超时自动结束任务...')
     out_temp.seek(0)
     rt = out_temp.read()
-    print (rt)
-    print (rt,file=f)
+
+    if rt != "":
+        key = "code" + str(sum_)
+        sum_ += 1
+        value = ""
+        for line in rt.splitlines():
+            if line[0:1] == '/':
+                value += line.split('.',1)[1] + '\n'
+            else:
+                value += line + '\n'
+        code[key] = "未指定的参数顺序1\n" + value
+
     out_temp.close()
 
     print ("-----------------------------------------------------------------",file=f)
@@ -643,8 +837,18 @@ def weggli_code_check():
         print('超时自动结束任务...')
     out_temp.seek(0)
     rt = out_temp.read()
-    print (rt)
-    print (rt,file=f)
+
+    if rt != "":
+        key = "code" + str(sum_)
+        sum_ += 1
+        value = ""
+        for line in rt.splitlines():
+            if line[0:1] == '/':
+                value += line.split('.',1)[1] + '\n'
+            else:
+                value += line + '\n'
+        code[key] = "未指定的参数顺序2\n" + value
+
     out_temp.close()
 
     print ("-----------------------------------------------------------------",file=f)
@@ -663,8 +867,18 @@ def weggli_code_check():
         print('超时自动结束任务...')
     out_temp.seek(0)
     rt = out_temp.read()
-    print (rt)
-    print (rt,file=f)
+
+    if rt != "":
+        key = "code" + str(sum_)
+        sum_ += 1
+        value = ""
+        for line in rt.splitlines():
+            if line[0:1] == '/':
+                value += line.split('.',1)[1] + '\n'
+            else:
+                value += line + '\n'
+        code[key] = "未指定的参数顺序3\n" + value
+
     out_temp.close()
 
     print ("-----------------------------------------------------------------",file=f)
@@ -683,8 +897,18 @@ def weggli_code_check():
         print('超时自动结束任务...')
     out_temp.seek(0)
     rt = out_temp.read()
-    print (rt)
-    print (rt,file=f)
+
+    if rt != "":
+        key = "code" + str(sum_)
+        sum_ += 1
+        value = ""
+        for line in rt.splitlines():
+            if line[0:1] == '/':
+                value += line.split('.',1)[1] + '\n'
+            else:
+                value += line + '\n'
+        code[key] = "未指定的参数顺序4\n" + value
+
     out_temp.close()
 
     print ("-----------------------------------------------------------------",file=f)
@@ -703,8 +927,18 @@ def weggli_code_check():
         print('超时自动结束任务...')
     out_temp.seek(0)
     rt = out_temp.read()
-    print (rt)
-    print (rt,file=f)
+
+    if rt != "":
+        key = "code" + str(sum_)
+        sum_ += 1
+        value = ""
+        for line in rt.splitlines():
+            if line[0:1] == '/':
+                value += line.split('.',1)[1] + '\n'
+            else:
+                value += line + '\n'
+        code[key] = "被零除\n" + value
+
     out_temp.close()
 
     print ("-----------------------------------------------------------------",file=f)
@@ -723,8 +957,18 @@ def weggli_code_check():
         print('超时自动结束任务...')
     out_temp.seek(0)
     rt = out_temp.read()
-    print (rt)
-    print (rt,file=f)
+
+    if rt != "":
+        key = "code" + str(sum_)
+        sum_ += 1
+        value = ""
+        for line in rt.splitlines():
+            if line[0:1] == '/':
+                value += line.split('.',1)[1] + '\n'
+            else:
+                value += line + '\n'
+        code[key] = "相同条件\n" + value
+
     out_temp.close()
 
     print ("-----------------------------------------------------------------",file=f)
@@ -743,8 +987,18 @@ def weggli_code_check():
         print('超时自动结束任务...')
     out_temp.seek(0)
     rt = out_temp.read()
-    print (rt)
-    print (rt,file=f)
+
+    if rt != "":
+        key = "code" + str(sum_)
+        sum_ += 1
+        value = ""
+        for line in rt.splitlines():
+            if line[0:1] == '/':
+                value += line.split('.',1)[1] + '\n'
+            else:
+                value += line + '\n'
+        code[key] = "空隙大小\n" + value
+
     out_temp.close()
 
     print ("-----------------------------------------------------------------",file=f)
@@ -763,8 +1017,18 @@ def weggli_code_check():
         print('超时自动结束任务...')
     out_temp.seek(0)
     rt = out_temp.read()
-    print (rt)
-    print (rt,file=f)
+
+    if rt != "":
+        key = "code" + str(sum_)
+        sum_ += 1
+        value = ""
+        for line in rt.splitlines():
+            if line[0:1] == '/':
+                value += line.split('.',1)[1] + '\n'
+            else:
+                value += line + '\n'
+        code[key] = "未初始化或存在内核指针\n" + value
+
     out_temp.close()
 
     print ("-----------------------------------------------------------------",file=f)
@@ -783,8 +1047,18 @@ def weggli_code_check():
         print('超时自动结束任务...')
     out_temp.seek(0)
     rt = out_temp.read()
-    print (rt)
-    print (rt,file=f)
+
+    if rt != "":
+        key = "code" + str(sum_)
+        sum_ += 1
+        value = ""
+        for line in rt.splitlines():
+            if line[0:1] == '/':
+                value += line.split('.',1)[1] + '\n'
+            else:
+                value += line + '\n'
+        code[key] = "KASLR 绕过\n" + value
+
     out_temp.close()
 
     print ("-----------------------------------------------------------------",file=f)
@@ -803,8 +1077,18 @@ def weggli_code_check():
         print('超时自动结束任务...')
     out_temp.seek(0)
     rt = out_temp.read()
-    print (rt)
-    print (rt,file=f)
+
+    if rt != "":
+        key = "code" + str(sum_)
+        sum_ += 1
+        value = ""
+        for line in rt.splitlines():
+            if line[0:1] == '/':
+                value += line.split('.',1)[1] + '\n'
+            else:
+                value += line + '\n'
+        code[key] = "分配字符串时不考虑终端snprintf \n" + value
+
     out_temp.close()
 
     print ("-----------------------------------------------------------------",file=f)
@@ -823,8 +1107,18 @@ def weggli_code_check():
         print('超时自动结束任务...')
     out_temp.seek(0)
     rt = out_temp.read()
-    print (rt)
-    print (rt,file=f)
+
+    if rt != "":
+        key = "code" + str(sum_)
+        sum_ += 1
+        value = ""
+        for line in rt.splitlines():
+            if line[0:1] == '/':
+                value += line.split('.',1)[1] + '\n'
+            else:
+                value += line + '\n'
+        code[key] = "snprintf误用\n" + value
+
     out_temp.close()
 
     print ("-----------------------------------------------------------------",file=f)
@@ -846,13 +1140,192 @@ def weggli_code_check():
         print('超时自动结束任务...')
     out_temp.seek(0)
     rt = out_temp.read()
-    print (rt)
-    print (rt,file=f)
+
+    if rt != "":
+        key = "code" + str(sum_)
+        sum_ += 1
+        value = ""
+        for line in rt.splitlines():
+            if line[0:1] == '/':
+                value += line.split('.',1)[1] + '\n'
+            else:
+                value += line + '\n'
+        code[key] = "类型混淆释放的方法\n" + value
+
     out_temp.close()
 
+    print ("-----------------------------------------------------------------",file=f)
+    print ("-----------------------------------------------------------------")
+    cmd = "weggli -R 'func=^str.*cpy$' '{char $b[_]; $func($b, _);}' ."
+    print ("用静态数组查找类似strcpy/memcpy的调用,cmd = ",cmd)
+    print ("用静态数组查找类似strcpy/memcpy的调用,cmd = ",cmd,file=f)
+    out_temp = tempfile.TemporaryFile(mode='w+')
+    fileno = out_temp.fileno()
+    #p = subprocess.Popen(cmd,shell=True,stdout=fileno,stderr=fileno)
+    #p.communicate()
+    #p.wait()
+    try:
+        p = subprocess.Popen(cmd,shell=True,stdout=fileno,stderr=fileno,preexec_fn=os.setsid)
+        p.communicate(timeout=10)
+        p.wait()
+    except subprocess.TimeoutExpired:
+        p.kill()
+        print('超时自动结束任务...')
+    out_temp.seek(0)
+    rt = out_temp.read()
+
+    if rt != "":
+        key = "code" + str(sum_)
+        sum_ += 1
+        value = ""
+        for line in rt.splitlines():
+            if line[0:1] == '/':
+                value += line.split('.',1)[1] + '\n'
+            else:
+                value += line + '\n'
+        code[key] = "用静态数组查找类似strcpy/memcpy的调用\n" + value
+
+    out_temp.close()
+
+    print ("-----------------------------------------------------------------",file=f)
+    print ("-----------------------------------------------------------------")
+    cmd = "weggli '{$user_num=atoi(_);$user_num+_;}' ."
+    print ("整数溢出,cmd = ",cmd)
+    print ("整数溢出,cmd = ",cmd,file=f)
+    out_temp = tempfile.TemporaryFile(mode='w+')
+    fileno = out_temp.fileno()
+    #p = subprocess.Popen(cmd,shell=True,stdout=fileno,stderr=fileno)
+    #p.communicate()
+    #p.wait()
+    try:
+        p = subprocess.Popen(cmd,shell=True,stdout=fileno,stderr=fileno,preexec_fn=os.setsid)
+        p.communicate(timeout=10)
+        p.wait()
+    except subprocess.TimeoutExpired:
+        p.kill()
+        print('超时自动结束任务...')
+    out_temp.seek(0)
+    rt = out_temp.read()
+
+    if rt != "":
+        key = "code" + str(sum_)
+        sum_ += 1
+        value = ""
+        for line in rt.splitlines():
+            if line[0:1] == '/':
+                value += line.split('.',1)[1] + '\n'
+            else:
+                value += line + '\n'
+        code[key] = "整数溢出\n" + value
+
+    out_temp.close()
+
+    print ("-----------------------------------------------------------------",file=f)
+    print ("-----------------------------------------------------------------")
+    cmd = "weggli -R '$fn=printf$' -R '$arg=[^\"]*' '{$fn($arg);}' ."
+    print ("格式化字符串错误,cmd = ",cmd)
+    print ("格式化字符串错误,cmd = ",cmd,file=f)
+    out_temp = tempfile.TemporaryFile(mode='w+')
+    fileno = out_temp.fileno()
+    #p = subprocess.Popen(cmd,shell=True,stdout=fileno,stderr=fileno)
+    #p.communicate()
+    #p.wait()
+    try:
+        p = subprocess.Popen(cmd,shell=True,stdout=fileno,stderr=fileno,preexec_fn=os.setsid)
+        p.communicate(timeout=10)
+        p.wait()
+    except subprocess.TimeoutExpired:
+        p.kill()
+        print('超时自动结束任务...')
+    out_temp.seek(0)
+    rt = out_temp.read()
+
+    if rt != "":
+        key = "code" + str(sum_)
+        sum_ += 1
+        value = ""
+        for line in rt.splitlines():
+            if line[0:1] == '/':
+                value += line.split('.',1)[1] + '\n'
+            else:
+                value += line + '\n'
+        code[key] = "格式化字符串错误\n" + value
+
+    out_temp.close()
+
+    print ("-----------------------------------------------------------------",file=f)
+    print ("-----------------------------------------------------------------")
+    cmd = "weggli -R '$fn=free' '{$fn($a);not: $a=_;not: return _;_($a);}' ."
+    print ("释放后继续使用,cmd = ",cmd)
+    print ("释放后继续使用,cmd = ",cmd,file=f)
+    out_temp = tempfile.TemporaryFile(mode='w+')
+    fileno = out_temp.fileno()
+    #p = subprocess.Popen(cmd,shell=True,stdout=fileno,stderr=fileno)
+    #p.communicate()
+    #p.wait()
+    try:
+        p = subprocess.Popen(cmd,shell=True,stdout=fileno,stderr=fileno,preexec_fn=os.setsid)
+        p.communicate(timeout=10)
+        p.wait()
+    except subprocess.TimeoutExpired:
+        p.kill()
+        print('超时自动结束任务...')
+    out_temp.seek(0)
+    rt = out_temp.read()
+
+    if rt != "":
+        key = "code" + str(sum_)
+        sum_ += 1
+        value = ""
+        for line in rt.splitlines():
+            if line[0:1] == '/':
+                value += line.split('.',1)[1] + '\n'
+            else:
+                value += line + '\n'
+        code[key] = "释放后继续使用\n" + value
+
+    out_temp.close()
+
+    print ("-----------------------------------------------------------------",file=f)
+    print ("-----------------------------------------------------------------")
+    cmd = "weggli '{$len=strlen($buf);$dest=malloc($len);strcpy($dest,$buf);}' ."
+    print ("无零终止符,cmd = ",cmd)
+    print ("无零终止符,cmd = ",cmd,file=f)
+    out_temp = tempfile.TemporaryFile(mode='w+')
+    fileno = out_temp.fileno()
+    #p = subprocess.Popen(cmd,shell=True,stdout=fileno,stderr=fileno)
+    #p.communicate()
+    #p.wait()
+    try:
+        p = subprocess.Popen(cmd,shell=True,stdout=fileno,stderr=fileno,preexec_fn=os.setsid)
+        p.communicate(timeout=10)
+        p.wait()
+    except subprocess.TimeoutExpired:
+        p.kill()
+        print('超时自动结束任务...')
+    out_temp.seek(0)
+    rt = out_temp.read()
+
+    if rt != "":
+        key = "code" + str(sum_)
+        sum_ += 1
+        value = ""
+        for line in rt.splitlines():
+            if line[0:1] == '/':
+                value += line.split('.',1)[1] + '\n'
+            else:
+                value += line + '\n'
+        code[key] = "无零终止符\n" + value
+
+    out_temp.close()
+
+    
     print ("-----------------------------------------------------------------")
     print ("-----------------------------------------------------------------",file=f)
     print('\n')
+
+    with open("code_result.json","w") as file:
+        json.dump(code,file)
 
 def main():
     if len(sys.argv) < 2:
